@@ -34,14 +34,14 @@ export class MenuItem
 
     // Main horizontal row
     let row = new St.BoxLayout({
-        vertical: false,
+        orientation: Clutter.Orientation.HORIZONTAL,
         x_expand: true,
         y_align: Clutter.ActorAlign.CENTER,
     });
 
     // Left: content + meta (stacked vertically, expands)
     let bodyBox = new St.BoxLayout({
-        vertical: true,
+        orientation: Clutter.Orientation.VERTICAL,
         x_expand: true,
         y_align: Clutter.ActorAlign.CENTER,
     });
@@ -77,7 +77,7 @@ export class MenuItem
 
     // Right: action buttons (pin + remove)
     let actionBox = new St.BoxLayout({
-        vertical: false,
+        orientation: Clutter.Orientation.HORIZONTAL,
         x_align: Clutter.ActorAlign.END,
         y_align: Clutter.ActorAlign.CENTER,
     });

@@ -125,7 +125,7 @@ export class HistoryMenu
 
   private _showEmptyState() {
       let box = new St.BoxLayout({
-          vertical: true,
+          orientation: Clutter.Orientation.VERTICAL,
           x_expand: true,
           y_expand: true,
           style_class: 'empty-state',

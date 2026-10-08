@@ -25,12 +25,12 @@ class ConfirmDialog
     super();
 
     let main_box = new St.BoxLayout({
-      vertical: false
+      orientation: Clutter.Orientation.HORIZONTAL
     });
     this.contentLayout.add_child(main_box);
 
     let message_box = new St.BoxLayout({
-      vertical: true
+      orientation: Clutter.Orientation.VERTICAL
     });
     main_box.add_child(message_box);
 

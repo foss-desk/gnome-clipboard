@@ -1,5 +1,6 @@
 import St from 'gi://St';
 import GObject from 'gi://GObject';
+import Clutter from 'gi://Clutter';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 
 let _ = (s: string) => s;
@@ -33,14 +34,14 @@ export class ActionBar
     })
     
     let mainBox = new St.BoxLayout({
-      vertical: false,
+      orientation: Clutter.Orientation.HORIZONTAL,
       x_expand: true,
       style_class: 'action-bar-container'
     });
 
     // Navigation Group
     let navBox = new St.BoxLayout({
-        vertical: false,
+        orientation: Clutter.Orientation.HORIZONTAL,
         style_class: 'nav-group'
     });
 
@@ -57,7 +58,7 @@ export class ActionBar
 
     // Actions Group
     let actionBox = new St.BoxLayout({
-        vertical: false,
+        orientation: Clutter.Orientation.HORIZONTAL,
         style_class: 'action-group'
     });
 
