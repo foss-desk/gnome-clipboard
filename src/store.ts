@@ -136,10 +136,20 @@ export class Store {
   }
 
   deleteImage(path: string) {
+    // The path comes from history.json, which the user can edit by hand, so
+    // never delete anything outside our own images directory.
+    if (GLib.path_get_dirname(path) !== this._imagesDir) {
+      log.warn(`refusing to delete image outside ${this._imagesDir}: ${path}`);
+      return;
+    }
+
     try {
       let file = Gio.file_new_for_path(path);
       file.delete(null);
     } catch (err) {
+      if ((err as any)?.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
+        return;
+      }
       log.error(`failed to delete image: ${err}`);
     }
   }
