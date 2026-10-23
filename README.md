@@ -32,7 +32,7 @@ You can customize Gnome Clipboard to fit your workflow perfectly using the exten
 | **Timer vs Event**    | Choose whether to poll the clipboard on a timer or use system events.                  | `Events`   |
 | **Save Pinned Only**  | If enabled, only pinned items are saved to disk; recent items are forgotten on reboot. | `false`    |
 | **Notifications**     | Toggle desktop notifications when an item is copied or pinned.                         | `false`    |
-| **Blacklist**         | A list of application classes/names whose clipboard events will be ignored.            | `[]`       |
+| **Blacklist**         | Apps whose copies are ignored, by desktop file id (e.g. `org.keepassxc.KeePassXC.desktop`) or name. Matched against the app that has the focus when the clipboard changes. | `[]`       |
 | **Keyboard Shortcut** | Set a global shortcut to open the clipboard menu.                                      | `<Super>v` |
 
 ## Installation
