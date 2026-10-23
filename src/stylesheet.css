@@ -237,6 +237,135 @@
     color: rgba(255, 255, 255, 0.45);
 }
 
+/* ─── Light popup variant ─────────────────────────────────────
+ * The rules above assume a dark popup. When the popup background is light,
+ * the extension adds the `light` class to the menu box (see
+ * _updateThemeVariant in clipboardPanel.ts) and these rules swap the
+ * translucent white overlays for translucent black ones.
+ */
+.gnome-clipboard.light {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.gnome-clipboard.light .scroll-view StScrollBar StButton#vhandle {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.gnome-clipboard.light .scroll-view StScrollBar StButton#vhandle:hover {
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+.gnome-clipboard.light .search-box {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.gnome-clipboard.light .search-box:focus {
+    border-color: #3584e4;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.gnome-clipboard.light .search-box-icon {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.gnome-clipboard.light .action-bar {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.gnome-clipboard.light .action-btn {
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.gnome-clipboard.light .action-btn:hover {
+    background-color: rgba(0, 0, 0, 0.07);
+    color: rgba(0, 0, 0, 0.87);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.gnome-clipboard.light .action-btn:active {
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+.gnome-clipboard.light .active-btn {
+    color: #1c71d8;
+}
+
+.gnome-clipboard.light .action-btn-danger:hover {
+    color: #c01c28;
+}
+
+.gnome-clipboard.light .service-toggle-container {
+    border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.gnome-clipboard.light .service-label {
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.gnome-clipboard.light .service-switch {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.gnome-clipboard.light .service-switch:hover {
+    background-color: rgba(0, 0, 0, 0.09);
+}
+
+.gnome-clipboard.light .active-switch {
+    background-color: rgba(53, 132, 228, 0.18);
+    color: #1c71d8;
+    border-color: rgba(53, 132, 228, 0.35);
+}
+
+.gnome-clipboard.light .active-switch:hover {
+    background-color: rgba(53, 132, 228, 0.28);
+}
+
+.gnome-clipboard.light .clipboard-item:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.09);
+}
+
+.gnome-clipboard.light .clipboard-item.selected {
+    background-color: rgba(53, 132, 228, 0.15);
+    border-color: rgba(53, 132, 228, 0.3);
+}
+
+.gnome-clipboard.light .clipboard-item-text {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.gnome-clipboard.light .clipboard-item-meta {
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.gnome-clipboard.light .item-action-btn:hover {
+    background-color: rgba(0, 0, 0, 0.09);
+}
+
+.gnome-clipboard.light .item-action-btn.pinned {
+    color: #e5a50a;
+}
+
+.gnome-clipboard.light .clipboard-image-preview {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.gnome-clipboard.light .section-header-label {
+    color: #1c71d8;
+}
+
+.gnome-clipboard.light .empty-state-icon {
+    color: #1c71d8;
+}
+
+.gnome-clipboard.light .empty-state-label {
+    color: rgba(0, 0, 0, 0.55);
+}
+
 /* ─── Preferences ─────────────────────────────────────────── */
 .prefs-page .pref-input {
     min-width: 220px;
