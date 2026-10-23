@@ -1,5 +1,11 @@
 import * as utils from './utils.js';
 
+let _ = (s: string) => s;
+
+export function init(gettextFunc: (s: string) => string) {
+    _ = gettextFunc;
+}
+
 export enum ClipboardItemType {
     TEXT,
     IMAGE
@@ -53,7 +59,7 @@ export class ClipboardItem {
 
     public display(): string {
       if (this.type === ClipboardItemType.IMAGE) {
-        return "[Image]";
+        return _("[Image]");
       }
       return utils.truncate(this.text, 32);
     }
