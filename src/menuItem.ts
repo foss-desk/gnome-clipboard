@@ -5,6 +5,7 @@ import Gio from 'gi://Gio';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 
 import * as ClipboardItem from './clipboardItem.js';
+import * as utils from './utils.js';
 
 export class MenuItem
   extends PopupMenu.PopupBaseMenuItem {
@@ -34,14 +35,14 @@ export class MenuItem
 
     // Main horizontal row
     let row = new St.BoxLayout({
-        orientation: Clutter.Orientation.HORIZONTAL,
+        ...utils.boxOrientation(Clutter.Orientation.HORIZONTAL),
         x_expand: true,
         y_align: Clutter.ActorAlign.CENTER,
     });
 
     // Left: content + meta (stacked vertically, expands)
     let bodyBox = new St.BoxLayout({
-        orientation: Clutter.Orientation.VERTICAL,
+        ...utils.boxOrientation(Clutter.Orientation.VERTICAL),
         x_expand: true,
         y_align: Clutter.ActorAlign.CENTER,
     });
@@ -77,7 +78,7 @@ export class MenuItem
 
     // Right: action buttons (pin + remove)
     let actionBox = new St.BoxLayout({
-        orientation: Clutter.Orientation.HORIZONTAL,
+        ...utils.boxOrientation(Clutter.Orientation.HORIZONTAL),
         x_align: Clutter.ActorAlign.END,
         y_align: Clutter.ActorAlign.CENTER,
     });

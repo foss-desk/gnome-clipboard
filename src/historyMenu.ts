@@ -5,6 +5,7 @@ import Clutter from 'gi://Clutter';
 import * as ScrollMenu from './scrollMenu.js';
 import * as ClipboardItem from './clipboardItem.js';
 import * as MenuItem from './menuItem.js';
+import * as utils from './utils.js';
 
 let _ = (s: string) => s;
 
@@ -125,7 +126,7 @@ export class HistoryMenu
 
   private _showEmptyState() {
       let box = new St.BoxLayout({
-          orientation: Clutter.Orientation.VERTICAL,
+          ...utils.boxOrientation(Clutter.Orientation.VERTICAL),
           x_expand: true,
           y_expand: true,
           style_class: 'empty-state',
