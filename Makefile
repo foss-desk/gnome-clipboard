@@ -49,7 +49,7 @@ compile: depcheck
 
 pack: compile
 	@echo "$(GREEN)Packing extension...$(NC)"
-	@cd $(DIST_DIR) && gnome-extensions pack --force --gettext-domain=$(EXT_NAME) $$(find . -maxdepth 1 -name "*.js" ! -name "extension.js" ! -name "prefs.js" -printf "--extra-source=%f ") . && mv $(BUNDLE) ..
+	@cd $(DIST_DIR) && gnome-extensions pack --force --gettext-domain=$(EXT_NAME) --podir=../po $$(find . -maxdepth 1 -name "*.js" ! -name "extension.js" ! -name "prefs.js" -printf "--extra-source=%f ") . && mv $(BUNDLE) ..
 	@echo "$(GREEN)Extension packed: $(BUNDLE)$(NC)"
 
 install: pack
