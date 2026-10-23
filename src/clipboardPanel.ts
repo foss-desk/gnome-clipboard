@@ -8,6 +8,7 @@ import St from 'gi://St';
 import GObject from 'gi://GObject';
 import Clutter from 'gi://Clutter';
 import Meta from 'gi://Meta';
+import Shell from 'gi://Shell';
 
 import * as History from './history.js';
 import * as HistoryMenu from './historyMenu.js';
@@ -42,6 +43,7 @@ class ClipboardPanelInternal extends PanelMenu.Button {
   private _keyPressEventID: number = 0;
   private _focusTimerID: number = 0;
   private _selectionOwnerChangedID: number = 0;
+  private _settingsChangedID: number = 0;
   private _menuNeedsRebuild: boolean = true;
 
   constructor(settings: any, _gettext: any, uuid: string, openPrefs: () => void) {
@@ -69,6 +71,10 @@ class ClipboardPanelInternal extends PanelMenu.Button {
     this.menu.addMenuItem(this._historyMenu);
     this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
     this.menu.addMenuItem(this._actionBar);
+
+    // Turning "save only pinned items" on must drop the unpinned ones from the
+    // file right away, not whenever the next copy happens to trigger a save.
+    this._settingsChangedID = this._settings.onChanged(() => this._saveHistoryDebounced());
 
     this._setupUI();
     this._loadHistory();
@@ -173,6 +179,7 @@ class ClipboardPanelInternal extends PanelMenu.Button {
 
   private _checkClipboard() {
     if (!this._actionBar.enable() || this._settings.privateMode()) return;
+    if (this._isFocusAppBlacklisted()) return;
 
     const clipboard = St.Clipboard.get_default();
     
@@ -190,6 +197,34 @@ class ClipboardPanelInternal extends PanelMenu.Button {
             log.error(`Check clipboard failed: ${e}`);
         }
     });
+  }
+
+  // Wayland does not tell us which client owns the clipboard, so the best
+  // available proxy is the application that has the focus when the selection
+  // changes: a copy is almost always made from the focused window. Entries are
+  // matched, ignoring case, against the desktop file id (with or without
+  // ".desktop"), the application name and the focused window's own class and
+  // application id. The window ones matter because the Shell cannot always map
+  // a window to a desktop file; it then reports an anonymous "window:N" app.
+  private _isFocusAppBlacklisted(): boolean {
+    const blacklist = this._settings.blacklist();
+    if (blacklist.length === 0) return false;
+
+    const app = Shell.WindowTracker.get_default().focus_app;
+    const win = global.display.focus_window;
+    const id: string = app?.get_id() ?? '';
+    const candidates = [
+      id,
+      id.replace(/\.desktop$/, ''),
+      app?.get_name() ?? '',
+      win?.get_wm_class() ?? '',
+      win?.get_gtk_application_id() ?? '',
+      win?.get_sandboxed_app_id() ?? '',
+    ].filter(s => s.length > 0).map(s => s.toLowerCase());
+
+    const blocked = blacklist.some(entry => candidates.includes(entry.toLowerCase()));
+    if (blocked) log.info(`skipping blacklisted app: ${candidates.join(', ')}`);
+    return blocked;
   }
 
   private _checkImageClipboard() {
@@ -330,7 +365,7 @@ class ClipboardPanelInternal extends PanelMenu.Button {
   private _saveHistoryDebounced() {
     if (this._saveTimerID) GLib.source_remove(this._saveTimerID);
     this._saveTimerID = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
-        this._store.save(this._history.getItems());
+        this._store.save(this._history.items(this._settings.savePinned()));
         this._saveTimerID = 0;
         return GLib.SOURCE_REMOVE;
     });
@@ -360,6 +395,11 @@ class ClipboardPanelInternal extends PanelMenu.Button {
     if (this._selectionOwnerChangedID) {
       global.display.get_selection().disconnect(this._selectionOwnerChangedID);
       this._selectionOwnerChangedID = 0;
+    }
+
+    if (this._settingsChangedID) {
+      this._settings.getSettings().disconnect(this._settingsChangedID);
+      this._settingsChangedID = 0;
     }
 
     super.destroy();
