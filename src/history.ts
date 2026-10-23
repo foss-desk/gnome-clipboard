@@ -35,9 +35,12 @@ export class History {
     return true;
   }
 
-  public trim(total: number) {
+  // Returns the items it dropped, so the caller can release what they own
+  // (an image item has a file on disk).
+  public trim(total: number): Array<ClipboardItem.ClipboardItem> {
+    const removed: Array<ClipboardItem.ClipboardItem> = [];
     if (total <= 0) {
-      return;
+      return removed;
     }
 
     // getSorted() puts pinned items first, then the most recently copied ones,
@@ -49,7 +52,9 @@ export class History {
         continue;
       }
       this._history.delete(item.id());
+      removed.push(item);
     }
+    return removed;
   }
 
   public items(only_pinned: boolean): Array<ClipboardItem.ClipboardItem> {
