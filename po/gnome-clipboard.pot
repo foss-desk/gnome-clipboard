@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-05 18:44+0300\n"
+"POT-Creation-Date: 2026-10-23 11:43-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,6 +36,9 @@ msgid "Settings"
 msgstr ""
 
 msgid "Service"
+msgstr ""
+
+msgid "[Image]"
 msgstr ""
 
 msgid "Clipboard"
@@ -66,6 +69,21 @@ msgid "Recent History"
 msgstr ""
 
 msgid "Clipboard is empty"
+msgstr ""
+
+msgid "Just now"
+msgstr ""
+
+#, javascript-format
+msgid "%dm ago"
+msgstr ""
+
+#, javascript-format
+msgid "%dh ago"
+msgstr ""
+
+#, javascript-format
+msgid "%dd ago"
 msgstr ""
 
 msgid "Preferences"

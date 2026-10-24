@@ -1,0 +1,140 @@
+# Spanish translations for gnome-clipboard package.
+# This file is distributed under the same license as the gnome-clipboard package.
+# kterva, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-clipboard\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-23 11:43-0300\n"
+"PO-Revision-Date: 2026-10-23 11:43-0300\n"
+"Last-Translator: kterva\n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Previous Item"
+msgstr "Elemento anterior"
+
+msgid "Next Item"
+msgstr "Elemento siguiente"
+
+msgid "Private Mode"
+msgstr "Modo privado"
+
+msgid "Pin Current Item"
+msgstr "Fijar elemento actual"
+
+msgid "Clear History"
+msgstr "Borrar historial"
+
+msgid "Settings"
+msgstr "Ajustes"
+
+msgid "Service"
+msgstr "Servicio"
+
+msgid "[Image]"
+msgstr "[Imagen]"
+
+msgid "Clipboard"
+msgstr "Portapapeles"
+
+msgid "Clipboard updated"
+msgstr "Portapapeles actualizado"
+
+msgid "Clear history?"
+msgstr "¿Borrar el historial?"
+
+msgid "Are you sure you want to remove all items?"
+msgstr "¿Seguro que quieres eliminar todos los elementos?"
+
+msgid "Empty"
+msgstr "Vaciar"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "OK"
+msgstr "Aceptar"
+
+msgid "Pinned"
+msgstr "Fijados"
+
+msgid "Recent History"
+msgstr "Historial reciente"
+
+msgid "Clipboard is empty"
+msgstr "El portapapeles está vacío"
+
+msgid "Just now"
+msgstr "Ahora mismo"
+
+#, javascript-format
+msgid "%dm ago"
+msgstr "hace %d min"
+
+#, javascript-format
+msgid "%dh ago"
+msgstr "hace %d h"
+
+#, javascript-format
+msgid "%dd ago"
+msgstr "hace %d d"
+
+msgid "Preferences"
+msgstr "Preferencias"
+
+msgid "Maximum size of history:"
+msgstr "Tamaño máximo del historial:"
+
+msgid "Sort history by:"
+msgstr "Ordenar historial por:"
+
+msgid "Read clipboard by timer:"
+msgstr "Leer el portapapeles con temporizador:"
+
+msgid "Timer interval (Millisecond):"
+msgstr "Intervalo del temporizador (milisegundos):"
+
+msgid "Save only pinned items:"
+msgstr "Guardar solo los elementos fijados:"
+
+msgid "Show notifications"
+msgstr "Mostrar notificaciones"
+
+msgid "Privacy"
+msgstr "Privacidad"
+
+msgid "Blacklisted App IDs"
+msgstr "ID de aplicaciones bloqueadas"
+
+msgid "Keyboard Shortcuts"
+msgstr "Atajos de teclado"
+
+msgid "Use formats like <Super>v, <Control><Alt>c, etc."
+msgstr "Usa formatos como <Super>v, <Control><Alt>c, etc."
+
+msgid "Toggle History Menu"
+msgstr "Mostrar u ocultar el historial"
+
+msgid "Toggle Private Mode"
+msgstr "Activar o desactivar el modo privado"
+
+msgid "Select Next Item"
+msgstr "Seleccionar el elemento siguiente"
+
+msgid "Select Previous Item"
+msgstr "Seleccionar el elemento anterior"
+
+msgid "None"
+msgstr "Ninguno"
+
+msgid "New shortcut..."
+msgstr "Nuevo atajo..."
+
+msgid "Search clipboard..."
+msgstr "Buscar en el portapapeles..."

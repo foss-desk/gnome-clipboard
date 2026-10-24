@@ -7,6 +7,12 @@ import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 import * as ClipboardItem from './clipboardItem.js';
 import * as utils from './utils.js';
 
+let _ = (s: string) => s;
+
+export function init(gettextFunc: (s: string) => string) {
+    _ = gettextFunc;
+}
+
 export class MenuItem
   extends PopupMenu.PopupBaseMenuItem {
 
@@ -133,10 +139,10 @@ export class MenuItem
 
   private _formatRelativeTime(timestamp: number): string {
       let diff = (Date.now() - timestamp) / 1000;
-      if (diff < 60) return 'Just now';
-      if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
-      if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
-      return Math.floor(diff / 86400) + 'd ago';
+      if (diff < 60) return _('Just now');
+      if (diff < 3600) return _('%dm ago').replace('%d', String(Math.floor(diff / 60)));
+      if (diff < 86400) return _('%dh ago').replace('%d', String(Math.floor(diff / 3600)));
+      return _('%dd ago').replace('%d', String(Math.floor(diff / 86400)));
   }
 
   text(): string {
