@@ -3,6 +3,9 @@ import GLib from 'gi://GLib';
 // However, GJS still supports it for now, but let's try to be clean.
 
 import Gio from 'gi://Gio';
+import GObject from 'gi://GObject';
+import St from 'gi://St';
+import Clutter from 'gi://Clutter';
 import * as log from './log.js';
 
 export function log_methods(obj: any) {
@@ -100,4 +103,15 @@ export async function spawnSync(...args: string[]) {
     log.error(`an exception occurred: ${err}`);
     return false;
   }
+}
+
+// St.BoxLayout gained `orientation` in GNOME 48 (deprecating `vertical`);
+// GNOME 45-47 only know `vertical` and throw on `orientation`.
+const hasBoxOrientation = GObject.Object.find_property.call(St.BoxLayout, 'orientation') !== null;
+
+export function boxOrientation(orientation: number): object {
+  if (hasBoxOrientation) {
+    return { orientation };
+  }
+  return { vertical: orientation === Clutter.Orientation.VERTICAL };
 }

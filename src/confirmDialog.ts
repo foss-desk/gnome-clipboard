@@ -2,6 +2,7 @@ import St from 'gi://St';
 import GObject from 'gi://GObject';
 import Clutter from 'gi://Clutter';
 import * as ModalDialog from 'resource:///org/gnome/shell/ui/modalDialog.js';
+import * as utils from './utils.js';
 
 let _ = (s: string) => s;
 
@@ -25,12 +26,12 @@ class ConfirmDialog
     super();
 
     let main_box = new St.BoxLayout({
-      orientation: Clutter.Orientation.HORIZONTAL
+      ...utils.boxOrientation(Clutter.Orientation.HORIZONTAL)
     });
     this.contentLayout.add_child(main_box);
 
     let message_box = new St.BoxLayout({
-      orientation: Clutter.Orientation.VERTICAL
+      ...utils.boxOrientation(Clutter.Orientation.VERTICAL)
     });
     main_box.add_child(message_box);
 
