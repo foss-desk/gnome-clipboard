@@ -105,6 +105,7 @@ class ClipboardPanelInternal extends PanelMenu.Button {
     this._openStateChangedID = this.menu.connect('open-state-changed',
       (_menu: any, open: boolean) => {
         if (open) {
+          this._updateThemeVariant();
           if (this._menuNeedsRebuild) {
             this._rebuildMenu();
           }
@@ -124,6 +125,19 @@ class ClipboardPanelInternal extends PanelMenu.Button {
         global.stage.set_key_focus(this._searchBox.searchEntry);
         return Clutter.EVENT_PROPAGATE;
       });
+  }
+
+  // The stylesheet is written for a dark popup. Look at the background the
+  // Shell theme actually gives the popup and, if it is light, add the `light`
+  // class so the dark-on-light rules apply. Checked on every open so theme and
+  // color-scheme changes are picked up without restarting the extension.
+  private _updateThemeVariant() {
+    const bg = this.menu.box.get_theme_node().get_background_color();
+    const luminance = (0.2126 * bg.red + 0.7152 * bg.green + 0.0722 * bg.blue) / 255;
+    if (luminance > 0.5)
+      this.menu.box.add_style_class_name('light');
+    else
+      this.menu.box.remove_style_class_name('light');
   }
 
   private async _loadHistory() {
