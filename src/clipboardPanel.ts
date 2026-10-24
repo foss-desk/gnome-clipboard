@@ -302,7 +302,7 @@ class ClipboardPanelInternal extends PanelMenu.Button {
   // So only the cheap, always-needed state is updated here; the widgets are
   // rebuilt lazily the next time the menu is actually opened.
   private _refresh() {
-    this._history.trim(this._settings.historySize());
+    this._deleteImages(this._history.trim(this._settings.historySize()));
 
     const sorted = this._history.getSorted(this._settings.historySort());
 
@@ -337,6 +337,7 @@ class ClipboardPanelInternal extends PanelMenu.Button {
 
   private _onRemoveItem(item: ClipboardItem.ClipboardItem) {
       this._history.delete(item.id());
+      this._deleteImages([item]);
       this._refresh();
       this._saveHistoryDebounced();
   }
@@ -350,7 +351,17 @@ class ClipboardPanelInternal extends PanelMenu.Button {
     });
   }
 
+  // An image item owns a PNG in the store; once the item is gone nothing else
+  // references that file, so remove it instead of leaving it on disk.
+  private _deleteImages(items: Array<ClipboardItem.ClipboardItem>) {
+    for (const item of items) {
+      if (item.type === ClipboardItem.ClipboardItemType.IMAGE && item.imagePath)
+        this._store.deleteImage(item.imagePath);
+    }
+  }
+
   private _doClearHistory(){
+    this._deleteImages(this._history.getItems());
     this._history.clear();
     this._store.save([]);
     this._refresh();
