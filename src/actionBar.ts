@@ -4,6 +4,8 @@ import Clutter from 'gi://Clutter';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 import * as utils from './utils.js';
 
+import * as Tooltip from './tooltip.js';
+
 let _ = (s: string) => s;
 
 export function init(gettextFunc: (s: string) => string) {
@@ -98,9 +100,8 @@ export class ActionBar
           // y_align: St.Align.MIDDLE
       });
 
-      // GNOME Shell doesn't have built-in tooltips for St.Button easily without extra code,
-      // but we can set accessibility label at least.
       button.set_accessible_name(tooltip);
+      Tooltip.attachTooltip(button, tooltip);
       
       return button;
   }
