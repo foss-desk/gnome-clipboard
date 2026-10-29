@@ -199,9 +199,18 @@
 
 /* ─── Image Previews ──────────────────────────────────────── */
 .gnome-clipboard .clipboard-image-preview {
-    margin: 4px 0;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 2px 0 7px 0;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.06);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+}
+
+.gnome-clipboard .clipboard-image-placeholder {
+    color: rgba(255, 255, 255, 0.35);
+    margin: 4px 0 8px 0;
 }
 
 /* ─── Section Headers ─────────────────────────────────────── */
@@ -351,7 +360,7 @@
 }
 
 .gnome-clipboard.light .clipboard-image-preview {
-    border: 1px solid rgba(0, 0, 0, 0.12);
+    background-color: rgba(0, 0, 0, 0.06);
 }
 
 .gnome-clipboard.light .section-header-label {

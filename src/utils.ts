@@ -48,11 +48,13 @@ export function hashCode(text: string): number {
   return hash;
 }
 
-export function hashBytes(bytes: any): number {
-  if (!bytes) return 0;
-  // Use GLib to compute a checksum
-  let checksum = GLib.compute_checksum_for_data(GLib.ChecksumType.MD5, bytes.get_data());
-  return hashCode(checksum);
+// Full content checksum, used as the on-disk identity of an image. Keeping the
+// complete MD5 hex string (instead of only its 32-bit hashCode) means two
+// different images can never collide on the same filename.
+export function checksumBytes(bytes: any): string {
+  if (!bytes) return '';
+  const data = typeof bytes.get_data === 'function' ? bytes.get_data() : bytes;
+  return GLib.compute_checksum_for_data(GLib.ChecksumType.MD5, data) ?? '';
 }
 
 export function truncate(text: string, length: number): string {
