@@ -11,16 +11,24 @@ export enum ClipboardItemType {
     IMAGE
 }
 
-// Store.saveImage() names the file `<id>.png`, where <id> is the hash of the
-// image bytes -- the same value ClipboardPanel tracks as the current selection.
-// Recover it from the filename so an image item's id() matches that selection;
-// hashing the path instead produced an id nothing else in the extension ever
-// computes, so an image was never highlighted and next/prev went dead after
-// copying one.
+// Image files are content-addressed: new ones are named `<md5>.png`, while
+// files written before the storage refactor kept the numeric hash as the
+// filename. Recover the same numeric id in both cases so selection, dedupe and
+// next/prev keep working for old and new history entries alike.
 function imageID(path: string): number {
   const name = path.slice(path.lastIndexOf('/') + 1);
-  const match = name.match(/^(-?\d+)\.png$/);
-  return match ? Number(match[1]) : utils.hashCode(path);
+
+  const legacy = name.match(/^(-?\d+)\.png$/);
+  if (legacy) {
+    return Number(legacy[1]);
+  }
+
+  const contentHash = name.match(/^([0-9a-f]{32})\.png$/i);
+  if (contentHash) {
+    return utils.hashCode(contentHash[1]);
+  }
+
+  return utils.hashCode(path);
 }
 
 export class ClipboardItem {
@@ -37,7 +45,7 @@ export class ClipboardItem {
     // changes after construction, so compute it lazily and keep it.
     private _id: number | null = null;
 
-    constructor(text: string, usage: number, pinned: boolean, copiedAt: number, usedAt: number, 
+    constructor(text: string, usage: number, pinned: boolean, copiedAt: number, usedAt: number,
                 type: ClipboardItemType = ClipboardItemType.TEXT, imagePath: string | null = null) {
       this.text = text;
       this.usage = usage;

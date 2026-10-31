@@ -6,6 +6,7 @@ declare module 'gi://GLib' { const GLib: any; export default GLib; }
 declare module 'gi://Meta' { const Meta: any; export default Meta; }
 declare module 'gi://Shell' { const Shell: any; export default Shell; }
 declare module 'gi://Clutter' { const Clutter: any; export default Clutter; }
+declare module 'gi://GdkPixbuf' { const GdkPixbuf: any; export default GdkPixbuf; }
 declare module 'gi://Gtk' { const Gtk: any; export default Gtk; }
 declare module 'gi://Adw' { const Adw: any; export default Adw; }
 declare module 'gi://Gdk' { const Gdk: any; export default Gdk; }
