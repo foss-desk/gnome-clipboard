@@ -35,7 +35,7 @@ export class ActionBar
       can_focus: false,
       style_class: 'action-bar',
     })
-    
+
     let mainBox = new St.BoxLayout({
       ...utils.boxOrientation(Clutter.Orientation.HORIZONTAL),
       x_expand: true,
@@ -50,7 +50,7 @@ export class ActionBar
 
     this._prevBtn = this._createIconButton('go-previous-symbolic', _('Previous Item'));
     this._nextBtn = this._createIconButton('go-next-symbolic', _('Next Item'));
-    
+
     navBox.add_child(this._prevBtn);
     navBox.add_child(this._nextBtn);
     mainBox.add_child(navBox);
@@ -77,9 +77,10 @@ export class ActionBar
     mainBox.add_child(actionBox);
 
     // Enable Switch
-    this._enableBtn = new PopupMenu.PopupSwitchMenuItem(_("Service"), true);
+    this._enableBtn = new PopupMenu.PopupSwitchMenuItem(_("Capture"), true);
+    Tooltip.attachTooltip(this._enableBtn, _("Capture copied items"));
     this._enableBtn.connect('toggled', (_item: any, _state: boolean) => {
-        // We might want to notify or trigger something here, 
+        // We might want to notify or trigger something here,
         // but since ClipboardPanel calls .enable() on every check, it works.
     });
     actionBox.add_child(this._enableBtn);
@@ -102,7 +103,7 @@ export class ActionBar
 
       button.set_accessible_name(tooltip);
       Tooltip.attachTooltip(button, tooltip);
-      
+
       return button;
   }
 
@@ -135,7 +136,7 @@ export class ActionBar
   onTogglePrivateMode(callback: (active: boolean) => void) {
     this._privateBtn.connect('clicked', () => callback(true));
   }
-  
+
   setPrivateMode(active: boolean) {
     if (active) {
       this._privateBtn.add_style_class_name('active-btn');

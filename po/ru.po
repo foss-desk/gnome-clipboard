@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-05 18:44+0300\n"
+"POT-Creation-Date: 2026-11-03 18:05+0800\n"
 "PO-Revision-Date: 2026-06-05 18:56+0300\n"
 "Last-Translator: DUB1401 <vlad.milosta@outlook.com>\n"
 "Language-Team: \n"
@@ -35,8 +35,14 @@ msgstr "Очистить историю"
 msgid "Settings"
 msgstr "Настройки"
 
-msgid "Service"
-msgstr ""
+msgid "Capture"
+msgstr "Захват"
+
+msgid "Capture copied items"
+msgstr "Захват скопированных элементов"
+
+msgid "[Image]"
+msgstr "[Изображение]"
 
 msgid "Clipboard"
 msgstr "Буфер обмена"
@@ -67,6 +73,21 @@ msgstr "Недавние"
 
 msgid "Clipboard is empty"
 msgstr "Буфер обмена пуст"
+
+msgid "Just now"
+msgstr "Только что"
+
+#, javascript-format
+msgid "%dm ago"
+msgstr "%d мин назад"
+
+#, javascript-format
+msgid "%dh ago"
+msgstr "%d ч назад"
+
+#, javascript-format
+msgid "%dd ago"
+msgstr "%d дн назад"
 
 msgid "Preferences"
 msgstr "Параметры"
@@ -114,7 +135,7 @@ msgid "Select Previous Item"
 msgstr "Выбрать предыдущий элемент"
 
 msgid "None"
-msgstr ""
+msgstr "Нет"
 
 msgid "New shortcut..."
 msgstr "Новое сочетание клавиш..."

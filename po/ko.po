@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 01:41+0800\n"
+"POT-Creation-Date: 2026-11-03 18:05+0800\n"
 "PO-Revision-Date: 2023-07-11 01:59+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,53 +18,128 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.3.2\n"
 
-msgid "Are you sure you want to remove all items?"
-msgstr "모든 항목을 삭제하시겠습니까?"
+msgid "Previous Item"
+msgstr "이전 항목"
 
-msgid "Cancel"
-msgstr "취소"
+msgid "Next Item"
+msgstr "다음 항목"
 
-msgid "Clear history?"
-msgstr "기록을 지우시겠습니까?"
+msgid "Private Mode"
+msgstr "비공개 모드"
+
+msgid "Pin Current Item"
+msgstr "현재 항목 고정"
+
+msgid "Clear History"
+msgstr "기록 지우기"
+
+msgid "Settings"
+msgstr "설정"
+
+msgid "Capture"
+msgstr "캡처"
+
+msgid "Capture copied items"
+msgstr "복사한 항목 캡처"
+
+msgid "[Image]"
+msgstr "[이미지]"
+
+msgid "Clipboard"
+msgstr "클립보드"
 
 msgid "Clipboard updated"
 msgstr "클립보드 업데이트됨"
 
-msgid "Copy time"
-msgstr "복사 시간"
+msgid "Clear history?"
+msgstr "기록을 지우시겠습니까?"
+
+msgid "Are you sure you want to remove all items?"
+msgstr "모든 항목을 삭제하시겠습니까?"
 
 msgid "Empty"
 msgstr "비어 있음"
 
-msgid "Enable"
-msgstr "사용"
-
-msgid "Gnome Clipboard"
-msgstr "그놈 클립보드"
-
-msgid "Maximum size of history:"
-msgstr "기록 최대 크기:"
-
-msgid "Most usage"
-msgstr "많이 사용"
+msgid "Cancel"
+msgstr "취소"
 
 msgid "OK"
 msgstr "확인"
 
+msgid "Pinned"
+msgstr "고정됨"
+
+msgid "Recent History"
+msgstr "최근 기록"
+
+msgid "Clipboard is empty"
+msgstr "클립보드가 비어 있습니다"
+
+msgid "Just now"
+msgstr "방금 전"
+
+#, javascript-format
+msgid "%dm ago"
+msgstr "%d분 전"
+
+#, javascript-format
+msgid "%dh ago"
+msgstr "%d시간 전"
+
+#, javascript-format
+msgid "%dd ago"
+msgstr "%d일 전"
+
 msgid "Preferences"
 msgstr "기본 설정"
 
-msgid "Recent usage"
-msgstr "최근 사용"
+msgid "Maximum size of history:"
+msgstr "기록 최대 크기:"
 
-msgid "Shortcuts"
-msgstr "바로 가기"
+msgid "Sort history by:"
+msgstr "기록 정렬 기준:"
 
-msgid "This operation cannot be undone."
-msgstr "이 동작은 취소할 수 없습니다."
+msgid "Read clipboard by timer:"
+msgstr "타이머로 클립보드 읽기:"
 
 msgid "Timer interval (Millisecond):"
 msgstr "시간 간격 (밀리초):"
 
-msgid "Type here to search..."
-msgstr "검색하려면 입력..."
+msgid "Save only pinned items:"
+msgstr "고정된 항목만 저장:"
+
+msgid "Show notifications"
+msgstr "알림 표시"
+
+msgid "Privacy"
+msgstr "개인 정보 보호"
+
+msgid "Blacklisted App IDs"
+msgstr "차단된 앱 ID"
+
+msgid "Keyboard Shortcuts"
+msgstr "키보드 단축키"
+
+msgid "Use formats like <Super>v, <Control><Alt>c, etc."
+msgstr "<Super>v, <Control><Alt>c 등의 형식을 사용하세요."
+
+msgid "Toggle History Menu"
+msgstr "기록 메뉴 전환"
+
+msgid "Toggle Private Mode"
+msgstr "비공개 모드 전환"
+
+msgid "Select Next Item"
+msgstr "다음 항목 선택"
+
+msgid "Select Previous Item"
+msgstr "이전 항목 선택"
+
+msgid "None"
+msgstr "없음"
+
+msgid "New shortcut..."
+msgstr "새 단축키..."
+
+msgid "Search clipboard..."
+msgstr "클립보드 검색..."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-08 20:12-0300\n"
+"POT-Creation-Date: 2026-11-03 18:05+0800\n"
 "PO-Revision-Date: 2023-07-11 21:28-0300\n"
 "Last-Translator: Iago <iagorichard@outlook.com>\n"
 "Language-Team: Language pt-br\n"
@@ -16,53 +16,128 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Are you sure you want to remove all items?"
-msgstr "Tem certeza de que deseja remover todos os itens?"
+msgid "Previous Item"
+msgstr "Item anterior"
 
-msgid "Cancel"
-msgstr "Cancelar"
+msgid "Next Item"
+msgstr "Próximo item"
 
-msgid "Clear history?"
-msgstr "Limpar histórico?"
+msgid "Private Mode"
+msgstr "Modo privado"
+
+msgid "Pin Current Item"
+msgstr "Fixar item atual"
+
+msgid "Clear History"
+msgstr "Limpar histórico"
+
+msgid "Settings"
+msgstr "Configurações"
+
+msgid "Capture"
+msgstr "Capturar"
+
+msgid "Capture copied items"
+msgstr "Capturar itens copiados"
+
+msgid "[Image]"
+msgstr "[Imagem]"
+
+msgid "Clipboard"
+msgstr "Área de transferência"
 
 msgid "Clipboard updated"
 msgstr "Área de transferência atualizada"
 
-msgid "Copy time"
-msgstr "Copiar item"
+msgid "Clear history?"
+msgstr "Limpar histórico?"
+
+msgid "Are you sure you want to remove all items?"
+msgstr "Tem certeza de que deseja remover todos os itens?"
 
 msgid "Empty"
 msgstr "Vazio"
 
-msgid "Enable"
-msgstr "Habilitado"
-
-msgid "Gnome Clipboard"
-msgstr "Área de transferência do Gnome"
-
-msgid "Maximum size of history:"
-msgstr "Tamanho máximo do histórico:"
-
-msgid "Most usage"
-msgstr "Mais usado"
+msgid "Cancel"
+msgstr "Cancelar"
 
 msgid "OK"
 msgstr "OK"
 
+msgid "Pinned"
+msgstr "Fixado"
+
+msgid "Recent History"
+msgstr "Histórico recente"
+
+msgid "Clipboard is empty"
+msgstr "A área de transferência está vazia"
+
+msgid "Just now"
+msgstr "Agora mesmo"
+
+#, javascript-format
+msgid "%dm ago"
+msgstr "há %d min"
+
+#, javascript-format
+msgid "%dh ago"
+msgstr "há %d h"
+
+#, javascript-format
+msgid "%dd ago"
+msgstr "há %d dias"
+
 msgid "Preferences"
 msgstr "Preferências"
 
-msgid "Recent usage"
-msgstr "Mais recente"
+msgid "Maximum size of history:"
+msgstr "Tamanho máximo do histórico:"
 
-msgid "Shortcuts"
-msgstr "Atalhos"
+msgid "Sort history by:"
+msgstr "Ordenar histórico por:"
 
-msgid "This operation cannot be undone."
-msgstr "Essa operação não pode ser desfeita."
+msgid "Read clipboard by timer:"
+msgstr "Ler área de transferência por temporizador:"
 
 msgid "Timer interval (Millisecond):"
 msgstr "Intervalo do temporizador (milissegundos):"
 
-msgid "Type here to search..."
-msgstr "Digite aqui para pesquisar..."
+msgid "Save only pinned items:"
+msgstr "Salvar apenas itens fixados:"
+
+msgid "Show notifications"
+msgstr "Mostrar notificações"
+
+msgid "Privacy"
+msgstr "Privacidade"
+
+msgid "Blacklisted App IDs"
+msgstr "IDs de aplicativos bloqueados"
+
+msgid "Keyboard Shortcuts"
+msgstr "Atalhos de teclado"
+
+msgid "Use formats like <Super>v, <Control><Alt>c, etc."
+msgstr "Use formatos como <Super>v, <Control><Alt>c, etc."
+
+msgid "Toggle History Menu"
+msgstr "Alternar menu de histórico"
+
+msgid "Toggle Private Mode"
+msgstr "Alternar modo privado"
+
+msgid "Select Next Item"
+msgstr "Selecionar próximo item"
+
+msgid "Select Previous Item"
+msgstr "Selecionar item anterior"
+
+msgid "None"
+msgstr "Nenhum"
+
+msgid "New shortcut..."
+msgstr "Novo atalho..."
+
+msgid "Search clipboard..."
+msgstr "Pesquisar na área de transferência..."
