@@ -3,9 +3,15 @@ import Gio from 'gi://Gio';
 import GdkPixbuf from 'gi://GdkPixbuf';
 import * as log from './log.js';
 
+// Longest edge of a cached preview. The menu only shows ~208px wide previews,
+// but a larger thumbnail keeps them crisp on HiDPI displays and gives the
+// preview widget room to crop very wide/tall images.
+const THUMB_MAX_SIZE = 512;
+const THUMB_SUFFIX = '.thumb.png';
+
+// Thumbnails live next to their source as `<image>.thumb.png`.
 export function thumbnailPathFor(imagePath: string): string {
-  const hash = GLib.compute_checksum_for_string(GLib.ChecksumType.MD5, imagePath, -1);
-  return GLib.build_filenamev([GLib.path_get_dirname(imagePath), `${hash}.thumb.png`]);
+  return imagePath.replace(/\.png$/i, THUMB_SUFFIX);
 }
 
 export class Store {
@@ -33,7 +39,7 @@ export class Store {
       if (!file.query_exists(null)) {
           return [];
       }
-      
+
       const result = await new Promise<any>((resolve, reject) => {
         file.load_contents_async(null, (file: any, res: any) => {
             try {
@@ -102,7 +108,7 @@ export class Store {
       let json = JSON.stringify(history);
       let file = Gio.file_new_for_path(this._path);
       const bytes = GLib.Bytes.new(new TextEncoder().encode(json));
-      
+
       await new Promise<void>((resolve, reject) => {
         file.replace_contents_async(bytes, null, false, Gio.FileCreateFlags.REPLACE_DESTINATION, null, (file: any, res: any) => {
             try {
@@ -118,12 +124,15 @@ export class Store {
     }
   }
 
-  async saveImage(id: number, bytes: any): Promise<string | null> {
-    let filename = `${id}.png`;
+  // `hash` is the full MD5 hex digest of the image bytes. Naming the file after
+  // the complete digest avoids the 32-bit collision that could overwrite
+  // another image while its history entry still pointed at the old path.
+  async saveImage(hash: string, bytes: any): Promise<string | null> {
+    let filename = `${hash}.png`;
     let path = GLib.build_filenamev([this._imagesDir, filename]);
     try {
       let file = Gio.file_new_for_path(path);
-      
+
       await new Promise<void>((resolve, reject) => {
         file.replace_contents_async(bytes, null, false, Gio.FileCreateFlags.REPLACE_DESTINATION, null, (file: any, res: any) => {
             try {
@@ -134,7 +143,8 @@ export class Store {
             }
         });
       });
-      await this._saveThumbnail(path);
+
+      await this.ensureThumbnail(path);
       return path;
     } catch (err) {
       log.error(`failed to save image: ${err}`);
@@ -142,7 +152,83 @@ export class Store {
     }
   }
 
+  // Generates `<image>.thumb.png` when it does not exist yet. Existing
+  // (pre-refactor) images get thumbnails lazily at startup.
+  async ensureThumbnail(imagePath: string): Promise<string | null> {
+    const thumbPath = thumbnailPathFor(imagePath);
+
+    try {
+      const imageFile = Gio.file_new_for_path(imagePath);
+      if (!imageFile.query_exists(null)) {
+        return null;
+      }
+
+      const thumbFile = Gio.file_new_for_path(thumbPath);
+      if (thumbFile.query_exists(null)) {
+        return thumbPath;
+      }
+
+      // Read through a stream so scaling happens during decode instead of
+      // putting a second full copy of a large PNG in memory.
+      const stream = imageFile.read(null);
+      if (!stream) {
+        return null;
+      }
+
+      let pixbuf: any;
+      try {
+        pixbuf = await new Promise<any>((resolve, reject) => {
+          GdkPixbuf.Pixbuf.new_from_stream_at_scale_async(
+            stream,
+            THUMB_MAX_SIZE,
+            THUMB_MAX_SIZE,
+            true,
+            null,
+            (_stream: any, res: any) => {
+              try {
+                resolve(GdkPixbuf.Pixbuf.new_from_stream_finish(res));
+              } catch (e) {
+                reject(e);
+              }
+            });
+        });
+      } finally {
+        try {
+          stream.close(null);
+        } catch {
+          // Stream is already closed or failed; nothing useful to do.
+        }
+      }
+
+      if (!pixbuf) {
+        return null;
+      }
+
+      // The item may have been removed while the image was decoding; don't
+      // leave a thumbnail behind for an image that no longer exists.
+      if (!imageFile.query_exists(null)) {
+        return null;
+      }
+
+      pixbuf.savev(thumbPath, 'png', ['compression'], ['9']);
+      return thumbPath;
+    } catch (err) {
+      log.warn(`failed to create thumbnail for ${imagePath}: ${err}`);
+      return null;
+    }
+  }
+
+  async ensureThumbnails(imagePaths: string[]) {
+    for (const path of imagePaths) {
+      if (path) {
+        await this.ensureThumbnail(path);
+      }
+    }
+  }
+
   deleteImage(path: string) {
+    // The path comes from history.json, which the user can edit by hand, so
+    // never delete anything outside our own images directory.
     if (GLib.path_get_dirname(path) !== this._imagesDir) {
       log.warn(`refusing to delete image outside ${this._imagesDir}: ${path}`);
       return;
@@ -162,41 +248,7 @@ export class Store {
       if ((err as any)?.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
         return;
       }
-      log.error(`failed to delete image: ${err}`);
-    }
-  }
-
-  private async _saveThumbnail(imagePath: string) {
-    let stream: any = null;
-
-    try {
-      stream = Gio.file_new_for_path(imagePath).read(null);
-      const pixbuf = await new Promise<any>((resolve, reject) => {
-        GdkPixbuf.Pixbuf.new_from_stream_at_scale_async(
-          stream,
-          512,
-          512,
-          true,
-          null,
-          (_stream: any, res: any) => {
-            try {
-              resolve(GdkPixbuf.Pixbuf.new_from_stream_finish(res));
-            } catch (e) {
-              reject(e);
-            }
-          });
-      });
-
-      pixbuf.savev(thumbnailPathFor(imagePath), 'png', ['compression'], ['9']);
-    } catch (err) {
-      log.warn(`failed to save thumbnail: ${err}`);
-    } finally {
-      if (stream) {
-        try {
-          stream.close(null);
-        } catch {
-        }
-      }
+      log.warn(`failed to delete ${path}: ${err}`);
     }
   }
 }

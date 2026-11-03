@@ -151,6 +151,7 @@ class ClipboardPanelInternal extends PanelMenu.Button {
     if (history && history.length > 0) {
         this._history.setItems(history);
         this._refresh();
+        this._store.ensureThumbnails(this._imagePaths());
     }
 
     // Neither monitoring mode reports what is already on the clipboard when the
@@ -160,6 +161,16 @@ class ClipboardPanelInternal extends PanelMenu.Button {
     // selection -- after the stored history has been restored, so that
     // setItems() cannot discard the entry this adds.
     this._checkClipboard();
+  }
+
+  private _imagePaths(): string[] {
+    const paths: string[] = [];
+    for (const item of this._history.getItems()) {
+      if (item.type === ClipboardItem.ClipboardItemType.IMAGE && item.imagePath) {
+        paths.push(item.imagePath);
+      }
+    }
+    return paths;
   }
 
   private _setupClipboardMonitoring() {
@@ -254,10 +265,11 @@ class ClipboardPanelInternal extends PanelMenu.Button {
   }
 
   private async _processImageBytes(bytes: any) {
-    let id = utils.hashBytes(bytes);
+    const hash = utils.checksumBytes(bytes);
+    const id = utils.hashCode(hash);
     if (id == this._selectedID) return;
-    
-    let path = await this._store.saveImage(id, bytes);
+
+    let path = await this._store.saveImage(hash, bytes);
     if (path) {
         this._selectedID = id;
         this._addToHistory("", 1, false, Date.now(), Date.now(), ClipboardItem.ClipboardItemType.IMAGE, path);
