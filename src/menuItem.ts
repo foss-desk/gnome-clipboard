@@ -8,6 +8,7 @@ import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 
 import * as ClipboardItem from './clipboardItem.js';
 import * as utils from './utils.js';
+import * as Tooltip from './tooltip.js';
 import { thumbnailPathFor } from './store.js';
 
 let _ = (s: string) => s;
@@ -94,10 +95,14 @@ export class MenuItem
     });
 
     this._pinBtn = this._createActionBtn('view-pin-symbolic', cbInfo.pinned ? 'pinned' : 'unpinned');
+    this._pinBtn.getTooltipText = () => this.cbInfo.pinned ? _('Unpin') : _('Pin');
+    Tooltip.attachTooltip(this._pinBtn);
     this._pinBtn.connect('clicked', () => onPin(this));
     actionBox.add_child(this._pinBtn);
 
     let removeBtn = this._createActionBtn('edit-delete-symbolic', 'remove-icon');
+    removeBtn.getTooltipText = () => _('Delete');
+    Tooltip.attachTooltip(removeBtn);
     removeBtn.connect('clicked', () => onRemove(this));
     actionBox.add_child(removeBtn);
 

@@ -103,7 +103,18 @@ export class HistoryMenu
           activate: false,
           style_class: 'section-header'
       });
-      header.add_child(new St.Label({ text: title, style_class: 'section-header-label' }));
+      (header as any).x_expand = true;
+
+      let label = new St.Label({
+          text: title,
+          style_class: 'section-header-label',
+          x_expand: true,
+          x_align: Clutter.ActorAlign.START,
+      });
+
+      label.clutter_text.ellipsize = 0; // PANGO_ELLIPSIZE_NONE
+      header.add_child(label);
+
       super.addMenuItem(header);
   }
 
