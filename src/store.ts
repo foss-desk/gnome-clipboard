@@ -1,6 +1,12 @@
 import GLib from 'gi://GLib';
 import Gio from 'gi://Gio';
+import GdkPixbuf from 'gi://GdkPixbuf';
 import * as log from './log.js';
+
+export function thumbnailPathFor(imagePath: string): string {
+  const hash = GLib.compute_checksum_for_string(GLib.ChecksumType.MD5, imagePath, -1);
+  return GLib.build_filenamev([GLib.path_get_dirname(imagePath), `${hash}.thumb.png`]);
+}
 
 export class Store {
   private _path: string = "";
@@ -128,6 +134,7 @@ export class Store {
             }
         });
       });
+      await this._saveThumbnail(path);
       return path;
     } catch (err) {
       log.error(`failed to save image: ${err}`);
@@ -136,21 +143,60 @@ export class Store {
   }
 
   deleteImage(path: string) {
-    // The path comes from history.json, which the user can edit by hand, so
-    // never delete anything outside our own images directory.
     if (GLib.path_get_dirname(path) !== this._imagesDir) {
       log.warn(`refusing to delete image outside ${this._imagesDir}: ${path}`);
       return;
     }
 
+    this._deleteFile(path);
+    this._deleteFile(thumbnailPathFor(path));
+  }
+
+  private _deleteFile(path: string) {
     try {
       let file = Gio.file_new_for_path(path);
-      file.delete(null);
+      if (file.query_exists(null)) {
+        file.delete(null);
+      }
     } catch (err) {
       if ((err as any)?.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
         return;
       }
       log.error(`failed to delete image: ${err}`);
+    }
+  }
+
+  private async _saveThumbnail(imagePath: string) {
+    let stream: any = null;
+
+    try {
+      stream = Gio.file_new_for_path(imagePath).read(null);
+      const pixbuf = await new Promise<any>((resolve, reject) => {
+        GdkPixbuf.Pixbuf.new_from_stream_at_scale_async(
+          stream,
+          512,
+          512,
+          true,
+          null,
+          (_stream: any, res: any) => {
+            try {
+              resolve(GdkPixbuf.Pixbuf.new_from_stream_finish(res));
+            } catch (e) {
+              reject(e);
+            }
+          });
+      });
+
+      pixbuf.savev(thumbnailPathFor(imagePath), 'png', ['compression'], ['9']);
+    } catch (err) {
+      log.warn(`failed to save thumbnail: ${err}`);
+    } finally {
+      if (stream) {
+        try {
+          stream.close(null);
+        } catch {
+        }
+      }
     }
   }
 }

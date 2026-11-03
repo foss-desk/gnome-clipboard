@@ -2,10 +2,13 @@ import St from 'gi://St';
 import GObject from 'gi://GObject';
 import Clutter from 'gi://Clutter';
 import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import GdkPixbuf from 'gi://GdkPixbuf';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 
 import * as ClipboardItem from './clipboardItem.js';
 import * as utils from './utils.js';
+import { thumbnailPathFor } from './store.js';
 
 let _ = (s: string) => s;
 
@@ -17,10 +20,8 @@ export class MenuItem
   extends PopupMenu.PopupBaseMenuItem {
 
   public cbInfo: ClipboardItem.ClipboardItem;
-  private static _iconCache: Map<string, any> = new Map();
   private _timeLabel: any;
   private _contentLabel: any;
-  private _contentIcon: any;
   private _pinBtn: any;
 
   static {
@@ -50,26 +51,17 @@ export class MenuItem
     let bodyBox = new St.BoxLayout({
         ...utils.boxOrientation(Clutter.Orientation.VERTICAL),
         x_expand: true,
+        x_align: Clutter.ActorAlign.START,
         y_align: Clutter.ActorAlign.CENTER,
     });
 
     if (cbInfo.type === ClipboardItem.ClipboardItemType.IMAGE && cbInfo.imagePath) {
-      let gicon = MenuItem._iconCache.get(cbInfo.imagePath);
-      if (!gicon) {
-          let file = Gio.file_new_for_path(cbInfo.imagePath);
-          gicon = Gio.Icon.new_for_string(file.get_path());
-          MenuItem._iconCache.set(cbInfo.imagePath, gicon);
-      }
-      this._contentIcon = new St.Icon({
-        gicon: gicon,
-        icon_size: 48,
-        style_class: 'clipboard-image-preview',
-      });
-      bodyBox.add_child(this._contentIcon);
+      bodyBox.add_child(this._buildPreview(cbInfo.imagePath));
     } else {
       this._contentLabel = new St.Label({
           text: cbInfo.display(),
           style_class: 'clipboard-item-text',
+          x_align: Clutter.ActorAlign.START,
       });
       this._contentLabel.clutter_text.line_wrap = true;
       bodyBox.add_child(this._contentLabel);
@@ -78,6 +70,7 @@ export class MenuItem
     this._timeLabel = new St.Label({
         text: this._formatRelativeTime(cbInfo.copiedAt),
         style_class: 'clipboard-item-meta',
+        x_align: Clutter.ActorAlign.START,
     });
     bodyBox.add_child(this._timeLabel);
     row.add_child(bodyBox);
@@ -105,18 +98,41 @@ export class MenuItem
     });
   }
 
+  private _buildPreview(imagePath: string): any {
+      const thumbPath = thumbnailPathFor(imagePath);
+      const source = Gio.File.new_for_path(thumbPath).query_exists(null) ? thumbPath : imagePath;
+      const [, width, height] = GdkPixbuf.Pixbuf.get_file_info(source);
+
+      if (!width || !height) {
+          return new St.Icon({
+              icon_name: 'image-x-generic-symbolic',
+              icon_size: 32,
+              x_align: Clutter.ActorAlign.START,
+          });
+      }
+
+      const scale = Math.min(208 / width, 112 / height, 1);
+      const w = Math.max(1, Math.round(width * scale));
+      const h = Math.max(1, Math.round(height * scale));
+      const uri = GLib.filename_to_uri(source, null);
+      const preview = new St.Widget({
+          style_class: 'clipboard-image-preview',
+          style: `background-image: url("${uri}"); min-width: ${w}px; min-height: ${h}px; max-width: ${w}px; max-height: ${h}px;`,
+          x_align: Clutter.ActorAlign.START,
+          y_align: Clutter.ActorAlign.START,
+          x_expand: false,
+          y_expand: false,
+      });
+
+      preview.set_size(w, h);
+      return preview;
+  }
+
   public updateUI() {
     this._timeLabel.set_text(this._formatRelativeTime(this.cbInfo.copiedAt));
 
     if (this._contentLabel) {
         this._contentLabel.set_text(this.cbInfo.display());
-    }
-
-    if (this._contentIcon && this.cbInfo.type === ClipboardItem.ClipboardItemType.IMAGE && this.cbInfo.imagePath) {
-        let gicon = MenuItem._iconCache.get(this.cbInfo.imagePath);
-        if (gicon) {
-            this._contentIcon.set_gicon(gicon);
-        }
     }
 
     this._pinBtn.remove_style_class_name('pinned');
