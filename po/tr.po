@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard@b00f.github.io\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 18:05+0800\n"
+"POT-Creation-Date: 2026-11-04 15:23+0800\n"
 "PO-Revision-Date: 2023-05-22 16:03+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
@@ -39,9 +39,6 @@ msgstr "Ayarlar"
 
 msgid "Capture"
 msgstr "Yakala"
-
-msgid "Capture copied items"
-msgstr "Kopyalanan öğeleri yakala"
 
 msgid "[Image]"
 msgstr "[Görsel]"
@@ -75,6 +72,15 @@ msgstr "Son geçmiş"
 
 msgid "Clipboard is empty"
 msgstr "Pano boş"
+
+msgid "Pin"
+msgstr "Sabitle"
+
+msgid "Unpin"
+msgstr "Sabitlemeyi kaldır"
+
+msgid "Delete"
+msgstr "Sil"
 
 msgid "Just now"
 msgstr "Az önce"
@@ -112,6 +118,30 @@ msgstr "Yalnızca sabitlenmiş öğeleri kaydet:"
 msgid "Show notifications"
 msgstr "Bildirimleri göster"
 
+msgid "Data folder"
+msgstr "Veri klasörü"
+
+msgid "Open the folder where clipboard history is stored"
+msgstr "Pano geçmişinin saklandığı klasörü aç"
+
+msgid "Open"
+msgstr "Aç"
+
+msgid "Images"
+msgstr "Görseller"
+
+msgid "Store images:"
+msgstr "Görselleri sakla:"
+
+msgid "Save images copied to the clipboard in the history"
+msgstr "Panoya kopyalanan görselleri geçmişe kaydet"
+
+msgid "Maximum image size (MB):"
+msgstr "En büyük görsel boyutu (MB):"
+
+msgid "Ignore images larger than this size"
+msgstr "Bu boyuttan büyük görselleri yoksay"
+
 msgid "Privacy"
 msgstr "Gizlilik"
 
@@ -144,3 +174,6 @@ msgstr "Yeni kısayol..."
 
 msgid "Search clipboard..."
 msgstr "Panoda ara..."
+
+#~ msgid "Capture copied items"
+#~ msgstr "Kopyalanan öğeleri yakala"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 18:05+0800\n"
+"POT-Creation-Date: 2026-11-04 15:23+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,9 +36,6 @@ msgid "Settings"
 msgstr ""
 
 msgid "Capture"
-msgstr ""
-
-msgid "Capture copied items"
 msgstr ""
 
 msgid "[Image]"
@@ -72,6 +69,15 @@ msgid "Recent History"
 msgstr ""
 
 msgid "Clipboard is empty"
+msgstr ""
+
+msgid "Pin"
+msgstr ""
+
+msgid "Unpin"
+msgstr ""
+
+msgid "Delete"
 msgstr ""
 
 msgid "Just now"
@@ -108,6 +114,30 @@ msgid "Save only pinned items:"
 msgstr ""
 
 msgid "Show notifications"
+msgstr ""
+
+msgid "Data folder"
+msgstr ""
+
+msgid "Open the folder where clipboard history is stored"
+msgstr ""
+
+msgid "Open"
+msgstr ""
+
+msgid "Images"
+msgstr ""
+
+msgid "Store images:"
+msgstr ""
+
+msgid "Save images copied to the clipboard in the history"
+msgstr ""
+
+msgid "Maximum image size (MB):"
+msgstr ""
+
+msgid "Ignore images larger than this size"
 msgstr ""
 
 msgid "Privacy"
