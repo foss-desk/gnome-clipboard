@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 18:05+0800\n"
+"POT-Creation-Date: 2026-11-04 15:23+0800\n"
 "PO-Revision-Date: 2026-06-05 18:56+0300\n"
 "Last-Translator: DUB1401 <vlad.milosta@outlook.com>\n"
 "Language-Team: \n"
@@ -37,9 +37,6 @@ msgstr "Настройки"
 
 msgid "Capture"
 msgstr "Захват"
-
-msgid "Capture copied items"
-msgstr "Захват скопированных элементов"
 
 msgid "[Image]"
 msgstr "[Изображение]"
@@ -73,6 +70,15 @@ msgstr "Недавние"
 
 msgid "Clipboard is empty"
 msgstr "Буфер обмена пуст"
+
+msgid "Pin"
+msgstr "Закрепить"
+
+msgid "Unpin"
+msgstr "Открепить"
+
+msgid "Delete"
+msgstr "Удалить"
 
 msgid "Just now"
 msgstr "Только что"
@@ -110,6 +116,30 @@ msgstr "Сохранять только закреплённые элемент�
 msgid "Show notifications"
 msgstr "Показывать уведомления"
 
+msgid "Data folder"
+msgstr "Папка данных"
+
+msgid "Open the folder where clipboard history is stored"
+msgstr "Открыть папку, в которой хранится история буфера обмена"
+
+msgid "Open"
+msgstr "Открыть"
+
+msgid "Images"
+msgstr "Изображения"
+
+msgid "Store images:"
+msgstr "Сохранять изображения:"
+
+msgid "Save images copied to the clipboard in the history"
+msgstr "Сохранять в истории изображения, скопированные в буфер обмена"
+
+msgid "Maximum image size (MB):"
+msgstr "Максимальный размер изображения (МБ):"
+
+msgid "Ignore images larger than this size"
+msgstr "Игнорировать изображения больше этого размера"
+
 msgid "Privacy"
 msgstr "Приватность"
 
@@ -142,3 +172,6 @@ msgstr "Новое сочетание клавиш..."
 
 msgid "Search clipboard..."
 msgstr "Поиск..."
+
+#~ msgid "Capture copied items"
+#~ msgstr "Захват скопированных элементов"

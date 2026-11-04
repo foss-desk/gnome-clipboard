@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 18:05+0800\n"
+"POT-Creation-Date: 2026-11-04 15:23+0800\n"
 "PO-Revision-Date: 2021-06-12 16:33+0800\n"
 "Last-Translator: Mostafa <mostafa.sedaghat@gmail.com>\n"
 "Language-Team: Persian\n"
@@ -36,9 +36,6 @@ msgstr "تنظیمات"
 
 msgid "Capture"
 msgstr "ضبط"
-
-msgid "Capture copied items"
-msgstr "ضبط آیتم‌های کپی‌شده"
 
 msgid "[Image]"
 msgstr "[تصویر]"
@@ -72,6 +69,15 @@ msgstr "تاریخچه اخیر"
 
 msgid "Clipboard is empty"
 msgstr "کلیپ‌بورد خالی است"
+
+msgid "Pin"
+msgstr "سنجاق کردن"
+
+msgid "Unpin"
+msgstr "برداشتن سنجاق"
+
+msgid "Delete"
+msgstr "حذف"
 
 msgid "Just now"
 msgstr "همین حالا"
@@ -109,6 +115,30 @@ msgstr "فقط آیتم‌های سنجاق‌شده ذخیره شود:"
 msgid "Show notifications"
 msgstr "نمایش اعلان‌ها"
 
+msgid "Data folder"
+msgstr "پوشهٔ داده"
+
+msgid "Open the folder where clipboard history is stored"
+msgstr "پوشه‌ای را که تاریخچهٔ بریده‌دان در آن ذخیره می‌شود باز کنید"
+
+msgid "Open"
+msgstr "باز کردن"
+
+msgid "Images"
+msgstr "تصاویر"
+
+msgid "Store images:"
+msgstr "ذخیرهٔ تصاویر:"
+
+msgid "Save images copied to the clipboard in the history"
+msgstr "تصاویر رونوشت‌شده در بریده‌دان را در تاریخچه ذخیره کن"
+
+msgid "Maximum image size (MB):"
+msgstr "حداکثر اندازهٔ تصویر (مگابایت):"
+
+msgid "Ignore images larger than this size"
+msgstr "تصاویر بزرگ‌تر از این اندازه نادیده گرفته شوند"
+
 msgid "Privacy"
 msgstr "حریم خصوصی"
 
@@ -141,3 +171,6 @@ msgstr "میانبر جدید..."
 
 msgid "Search clipboard..."
 msgstr "جست‌وجو در کلیپ‌بورد..."
+
+#~ msgid "Capture copied items"
+#~ msgstr "ضبط آیتم‌های کپی‌شده"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 18:05+0800\n"
+"POT-Creation-Date: 2026-11-04 15:23+0800\n"
 "PO-Revision-Date: 2023-08-14 20:44+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
@@ -39,9 +39,6 @@ msgstr "Instellingen"
 
 msgid "Capture"
 msgstr "Vastleggen"
-
-msgid "Capture copied items"
-msgstr "Gekopieerde items vastleggen"
 
 msgid "[Image]"
 msgstr "[Afbeelding]"
@@ -75,6 +72,15 @@ msgstr "Recente geschiedenis"
 
 msgid "Clipboard is empty"
 msgstr "Klembord is leeg"
+
+msgid "Pin"
+msgstr "Vastmaken"
+
+msgid "Unpin"
+msgstr "Losmaken"
+
+msgid "Delete"
+msgstr "Verwijderen"
 
 msgid "Just now"
 msgstr "Zojuist"
@@ -112,6 +118,30 @@ msgstr "Alleen vastgemaakte items opslaan:"
 msgid "Show notifications"
 msgstr "Meldingen tonen"
 
+msgid "Data folder"
+msgstr "Gegevensmap"
+
+msgid "Open the folder where clipboard history is stored"
+msgstr "Open de map waarin de klembordgeschiedenis wordt opgeslagen"
+
+msgid "Open"
+msgstr "Openen"
+
+msgid "Images"
+msgstr "Afbeeldingen"
+
+msgid "Store images:"
+msgstr "Afbeeldingen opslaan:"
+
+msgid "Save images copied to the clipboard in the history"
+msgstr "Afbeeldingen die naar het klembord worden gekopieerd in de geschiedenis opslaan"
+
+msgid "Maximum image size (MB):"
+msgstr "Maximale afbeeldingsgrootte (MB):"
+
+msgid "Ignore images larger than this size"
+msgstr "Afbeeldingen groter dan deze grootte negeren"
+
 msgid "Privacy"
 msgstr "Privacy"
 
@@ -144,3 +174,6 @@ msgstr "Nieuwe sneltoets..."
 
 msgid "Search clipboard..."
 msgstr "Klembord doorzoeken..."
+
+#~ msgid "Capture copied items"
+#~ msgstr "Gekopieerde items vastleggen"

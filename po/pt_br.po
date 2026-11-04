@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 18:05+0800\n"
+"POT-Creation-Date: 2026-11-04 15:23+0800\n"
 "PO-Revision-Date: 2023-07-11 21:28-0300\n"
 "Last-Translator: Iago <iagorichard@outlook.com>\n"
 "Language-Team: Language pt-br\n"
@@ -36,9 +36,6 @@ msgstr "Configurações"
 
 msgid "Capture"
 msgstr "Capturar"
-
-msgid "Capture copied items"
-msgstr "Capturar itens copiados"
 
 msgid "[Image]"
 msgstr "[Imagem]"
@@ -72,6 +69,15 @@ msgstr "Histórico recente"
 
 msgid "Clipboard is empty"
 msgstr "A área de transferência está vazia"
+
+msgid "Pin"
+msgstr "Fixar"
+
+msgid "Unpin"
+msgstr "Desafixar"
+
+msgid "Delete"
+msgstr "Excluir"
 
 msgid "Just now"
 msgstr "Agora mesmo"
@@ -109,6 +115,30 @@ msgstr "Salvar apenas itens fixados:"
 msgid "Show notifications"
 msgstr "Mostrar notificações"
 
+msgid "Data folder"
+msgstr "Pasta de dados"
+
+msgid "Open the folder where clipboard history is stored"
+msgstr "Abrir a pasta onde o histórico da área de transferência é armazenado"
+
+msgid "Open"
+msgstr "Abrir"
+
+msgid "Images"
+msgstr "Imagens"
+
+msgid "Store images:"
+msgstr "Armazenar imagens:"
+
+msgid "Save images copied to the clipboard in the history"
+msgstr "Salvar no histórico as imagens copiadas para a área de transferência"
+
+msgid "Maximum image size (MB):"
+msgstr "Tamanho máximo da imagem (MB):"
+
+msgid "Ignore images larger than this size"
+msgstr "Ignorar imagens maiores que este tamanho"
+
 msgid "Privacy"
 msgstr "Privacidade"
 
@@ -141,3 +171,6 @@ msgstr "Novo atalho..."
 
 msgid "Search clipboard..."
 msgstr "Pesquisar na área de transferência..."
+
+#~ msgid "Capture copied items"
+#~ msgstr "Capturar itens copiados"

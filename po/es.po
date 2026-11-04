@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 18:05+0800\n"
+"POT-Creation-Date: 2026-11-04 15:23+0800\n"
 "PO-Revision-Date: 2026-10-23 11:43-0300\n"
 "Last-Translator: kterva\n"
 "Language-Team: Spanish\n"
@@ -36,9 +36,6 @@ msgstr "Ajustes"
 
 msgid "Capture"
 msgstr "Capturar"
-
-msgid "Capture copied items"
-msgstr "Capturar elementos copiados"
 
 msgid "[Image]"
 msgstr "[Imagen]"
@@ -72,6 +69,15 @@ msgstr "Historial reciente"
 
 msgid "Clipboard is empty"
 msgstr "El portapapeles está vacío"
+
+msgid "Pin"
+msgstr "Fijar"
+
+msgid "Unpin"
+msgstr "Desfijar"
+
+msgid "Delete"
+msgstr "Eliminar"
 
 msgid "Just now"
 msgstr "Ahora mismo"
@@ -109,6 +115,30 @@ msgstr "Guardar solo los elementos fijados:"
 msgid "Show notifications"
 msgstr "Mostrar notificaciones"
 
+msgid "Data folder"
+msgstr "Carpeta de datos"
+
+msgid "Open the folder where clipboard history is stored"
+msgstr "Abrir la carpeta donde se guarda el historial del portapapeles"
+
+msgid "Open"
+msgstr "Abrir"
+
+msgid "Images"
+msgstr "Imágenes"
+
+msgid "Store images:"
+msgstr "Guardar imágenes:"
+
+msgid "Save images copied to the clipboard in the history"
+msgstr "Guardar en el historial las imágenes copiadas al portapapeles"
+
+msgid "Maximum image size (MB):"
+msgstr "Tamaño máximo de imagen (MB):"
+
+msgid "Ignore images larger than this size"
+msgstr "Ignorar las imágenes más grandes que este tamaño"
+
 msgid "Privacy"
 msgstr "Privacidad"
 
@@ -141,3 +171,6 @@ msgstr "Nuevo atajo..."
 
 msgid "Search clipboard..."
 msgstr "Buscar en el portapapeles..."
+
+#~ msgid "Capture copied items"
+#~ msgstr "Capturar elementos copiados"
