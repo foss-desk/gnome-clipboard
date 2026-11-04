@@ -95,14 +95,12 @@ export class MenuItem
     });
 
     this._pinBtn = this._createActionBtn('view-pin-symbolic', cbInfo.pinned ? 'pinned' : 'unpinned');
-    this._pinBtn.getTooltipText = () => this.cbInfo.pinned ? _('Unpin') : _('Pin');
-    Tooltip.attachTooltip(this._pinBtn);
+    Tooltip.attachTooltip(this._pinBtn, () => this.cbInfo.pinned ? _('Unpin') : _('Pin'));
     this._pinBtn.connect('clicked', () => onPin(this));
     actionBox.add_child(this._pinBtn);
 
     let removeBtn = this._createActionBtn('edit-delete-symbolic', 'remove-icon');
-    removeBtn.getTooltipText = () => _('Delete');
-    Tooltip.attachTooltip(removeBtn);
+    Tooltip.attachTooltip(removeBtn, () => _('Delete'));
     removeBtn.connect('clicked', () => onRemove(this));
     actionBox.add_child(removeBtn);
 

@@ -49,12 +49,10 @@ export class ActionBar
     });
 
     this._prevBtn = this._createIconButton('go-previous-symbolic');
-    this._prevBtn.getTooltipText = () => _('Previous Item');
-    Tooltip.attachTooltip(this._prevBtn);
+    Tooltip.attachTooltip(this._prevBtn, () => _('Previous Item'));
 
     this._nextBtn = this._createIconButton('go-next-symbolic');
-    this._nextBtn.getTooltipText = () => _('Next Item');
-    Tooltip.attachTooltip(this._nextBtn);
+    Tooltip.attachTooltip(this._nextBtn, () => _('Next Item'));
 
     navBox.add_child(this._prevBtn);
     navBox.add_child(this._nextBtn);
@@ -71,20 +69,16 @@ export class ActionBar
     });
 
     this._privateBtn = this._createIconButton('view-conceal-symbolic');
-    this._privateBtn.getTooltipText = () => _('Private Mode');
-    Tooltip.attachTooltip(this._privateBtn);
+    Tooltip.attachTooltip(this._privateBtn, () => _('Private Mode'));
 
     this._pinBtn = this._createIconButton('view-pin-symbolic');
-    this._pinBtn.getTooltipText = () => _('Pin Current Item');
-    Tooltip.attachTooltip(this._pinBtn);
+    Tooltip.attachTooltip(this._pinBtn, () => _('Pin Current Item'));
 
     this._clearBtn = this._createIconButton('edit-delete-symbolic', 'action-btn-danger');
-    this._clearBtn.getTooltipText = () => _('Clear History');
-    Tooltip.attachTooltip(this._clearBtn);
+    Tooltip.attachTooltip(this._clearBtn, () => _('Clear History'));
 
     this._settingsBtn = this._createIconButton('emblem-system-symbolic');
-    this._settingsBtn.getTooltipText = () => _('Settings');
-    Tooltip.attachTooltip(this._settingsBtn);
+    Tooltip.attachTooltip(this._settingsBtn, () => _('Settings'));
 
     actionBox.add_child(this._privateBtn);
     actionBox.add_child(this._pinBtn);

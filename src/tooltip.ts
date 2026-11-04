@@ -5,11 +5,8 @@ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 const SHOW_DELAY_MS = 500;
 const GAP = 6;
 
-export function attachTooltip(actor: any) {
-  if (typeof actor.getTooltipText !== 'function')
-    return;
-
-  actor.set_accessible_name(actor.getTooltipText());
+export function attachTooltip(actor: any, tooltip: () => string) {
+  actor.set_accessible_name(tooltip());
 
   let label: any = null;
   let timeoutID = 0;
@@ -27,8 +24,8 @@ export function attachTooltip(actor: any) {
 
   const show = () => {
     timeoutID = 0;
-    actor.set_accessible_name(actor.getTooltipText());
-    label = new St.Label({ text: actor.getTooltipText(), style_class: 'dash-label' });
+    actor.set_accessible_name(tooltip());
+    label = new St.Label({ text: tooltip(), style_class: 'dash-label' });
     const layoutManager = (Main as any).layoutManager;
     layoutManager.uiGroup.add_child(label);
 
