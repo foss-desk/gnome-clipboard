@@ -33,6 +33,18 @@
       <summary>Show notifications</summary>
     </key>
 
+    <key type="b" name="store-images">
+      <default>true</default>
+      <summary>Store images</summary>
+      <description>Whether images copied to the clipboard are saved in the history.</description>
+    </key>
+
+    <key type="u" name="max-image-size">
+      <default>10</default>
+      <summary>Maximum image size (MB)</summary>
+      <description>Images larger than this size, in megabytes, are ignored.</description>
+    </key>
+
     <key type="b" name="private-mode">
       <default>false</default>
       <summary>Private mode</summary>

@@ -161,6 +161,55 @@ export default class GnomeClipboardPreferences extends ExtensionPreferences {
         dataFolderRow.set_activatable_widget(openDataFolderButton);
         group.add(dataFolderRow);
 
+        // Images Group
+        const imagesGroup = new Adw.PreferencesGroup({
+            title: this.gettext('Images'),
+        });
+        page.add(imagesGroup);
+
+        // Store Images
+        const storeImagesRow = new Adw.ActionRow({
+            title: this.gettext('Store images:'),
+            subtitle: this.gettext('Save images copied to the clipboard in the history'),
+        });
+        const storeImagesSwitch = new Gtk.Switch({
+            valign: Gtk.Align.CENTER,
+            css_classes: ['service-switch'],
+        });
+        settings.bind(
+            Settings.STORE_IMAGES,
+            storeImagesSwitch,
+            'active',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        storeImagesRow.add_suffix(storeImagesSwitch);
+        storeImagesRow.set_activatable_widget(storeImagesSwitch);
+        imagesGroup.add(storeImagesRow);
+
+        // Maximum Image Size
+        const maxImageSizeRow = new Adw.ActionRow({
+            title: this.gettext('Maximum image size (MB):'),
+            subtitle: this.gettext('Ignore images larger than this size'),
+        });
+        const maxImageSizeSpin = new Gtk.SpinButton({
+            valign: Gtk.Align.CENTER,
+            css_classes: ['pref-input'],
+            adjustment: new Gtk.Adjustment({
+                lower: 1,
+                upper: 1024,
+                step_increment: 1,
+            }),
+        });
+        settings.bind(
+            Settings.MAX_IMAGE_SIZE,
+            maxImageSizeSpin,
+            'value',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        maxImageSizeRow.add_suffix(maxImageSizeSpin);
+        maxImageSizeRow.set_activatable_widget(maxImageSizeSpin);
+        imagesGroup.add(maxImageSizeRow);
+
         // Privacy Group
         const privacyGroup = new Adw.PreferencesGroup({
             title: this.gettext('Privacy'),
