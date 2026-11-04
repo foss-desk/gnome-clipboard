@@ -105,11 +105,13 @@ export class HistoryMenu
       });
       (header as any).x_expand = true;
 
+      // A non-FILL x_align cancels x_expand, so the label would only get its
+      // preferred width and clip longer/translated titles. Let it fill the
+      // header and disable ellipsizing so the header never trims.
       let label = new St.Label({
           text: title,
           style_class: 'section-header-label',
           x_expand: true,
-          x_align: Clutter.ActorAlign.START,
       });
 
       label.clutter_text.ellipsize = 0; // PANGO_ELLIPSIZE_NONE
