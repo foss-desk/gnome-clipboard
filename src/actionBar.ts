@@ -48,8 +48,13 @@ export class ActionBar
         style_class: 'nav-group'
     });
 
-    this._prevBtn = this._createIconButton('go-previous-symbolic', _('Previous Item'));
-    this._nextBtn = this._createIconButton('go-next-symbolic', _('Next Item'));
+    this._prevBtn = this._createIconButton('go-previous-symbolic');
+    this._prevBtn.getTooltipText = () => _('Previous Item');
+    Tooltip.attachTooltip(this._prevBtn);
+
+    this._nextBtn = this._createIconButton('go-next-symbolic');
+    this._nextBtn.getTooltipText = () => _('Next Item');
+    Tooltip.attachTooltip(this._nextBtn);
 
     navBox.add_child(this._prevBtn);
     navBox.add_child(this._nextBtn);
@@ -65,10 +70,21 @@ export class ActionBar
         style_class: 'action-group'
     });
 
-    this._privateBtn = this._createIconButton('view-conceal-symbolic', _('Private Mode'));
-    this._pinBtn = this._createIconButton('view-pin-symbolic', _('Pin Current Item'));
-    this._clearBtn = this._createIconButton('edit-delete-symbolic', _('Clear History'), 'action-btn-danger');
-    this._settingsBtn = this._createIconButton('emblem-system-symbolic', _('Settings'));
+    this._privateBtn = this._createIconButton('view-conceal-symbolic');
+    this._privateBtn.getTooltipText = () => _('Private Mode');
+    Tooltip.attachTooltip(this._privateBtn);
+
+    this._pinBtn = this._createIconButton('view-pin-symbolic');
+    this._pinBtn.getTooltipText = () => _('Pin Current Item');
+    Tooltip.attachTooltip(this._pinBtn);
+
+    this._clearBtn = this._createIconButton('edit-delete-symbolic', 'action-btn-danger');
+    this._clearBtn.getTooltipText = () => _('Clear History');
+    Tooltip.attachTooltip(this._clearBtn);
+
+    this._settingsBtn = this._createIconButton('emblem-system-symbolic');
+    this._settingsBtn.getTooltipText = () => _('Settings');
+    Tooltip.attachTooltip(this._settingsBtn);
 
     actionBox.add_child(this._privateBtn);
     actionBox.add_child(this._pinBtn);
@@ -87,8 +103,8 @@ export class ActionBar
     this.add_child(mainBox);
   }
 
-  private _createIconButton(iconName: string, tooltip: string, extraClass: string = '') {
-      let button = new St.Button({
+  private _createIconButton(iconName: string, extraClass: string = '') {
+      return new St.Button({
           style_class: `action-btn ${extraClass}`,
           child: new St.Icon({
               icon_name: iconName,
@@ -96,14 +112,7 @@ export class ActionBar
           }),
           can_focus: true,
           track_hover: true,
-          // x_align: St.Align.MIDDLE,
-          // y_align: St.Align.MIDDLE
       });
-
-      button.set_accessible_name(tooltip);
-      Tooltip.attachTooltip(button, tooltip);
-
-      return button;
   }
 
   enableNextButton(enable: boolean) {
