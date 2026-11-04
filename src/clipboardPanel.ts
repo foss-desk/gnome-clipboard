@@ -253,6 +253,8 @@ class ClipboardPanelInternal extends PanelMenu.Button {
   }
 
   private _checkImageClipboard() {
+    if (!this._settings.storeImages()) return;
+
     const clipboard = St.Clipboard.get_default();
     
     clipboard.get_content(St.ClipboardType.CLIPBOARD, 'image/png', (_cb: any, bytes: any) => {
@@ -265,6 +267,12 @@ class ClipboardPanelInternal extends PanelMenu.Button {
   }
 
   private async _processImageBytes(bytes: any) {
+    const maxBytes = this._settings.maxImageSizeInBytes();
+    if (maxBytes > 0 && bytes.get_size() > maxBytes) {
+        log.info(`ignoring image of ${bytes.get_size()} bytes, larger than ${maxBytes} bytes`);
+        return;
+    }
+
     const hash = utils.checksumBytes(bytes);
     const id = utils.hashCode(hash);
     if (id == this._selectedID) return;

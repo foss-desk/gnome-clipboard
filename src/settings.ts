@@ -7,6 +7,8 @@ export const CLIPBOARD_TIMER = "clipboard-timer";
 export const TIMER_INTERVAL = "timer-interval";
 export const SAVE_PINNED = "save-pinned";
 export const SHOW_NOTIFICATIONS = "show-notifications";
+export const STORE_IMAGES = "store-images";
+export const MAX_IMAGE_SIZE = "max-image-size";
 export const PRIVATE_MODE = "private-mode";
 export const BLACKLIST = "blacklist";
 export const SHORTCUT_MENU = "shortcut-menu";
@@ -53,6 +55,14 @@ export class ExtensionSettings {
 
     showNotifications(): boolean {
         return this._settings.get_boolean(SHOW_NOTIFICATIONS);
+    }
+
+    storeImages(): boolean {
+        return this._settings.get_boolean(STORE_IMAGES);
+    }
+
+    maxImageSizeInBytes(): number {
+        return this._settings.get_uint(MAX_IMAGE_SIZE) * 1024 * 1024;
     }
 
     privateMode(): boolean {
