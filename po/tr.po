@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard@b00f.github.io\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 01:41+0800\n"
+"POT-Creation-Date: 2026-11-03 18:05+0800\n"
 "PO-Revision-Date: 2023-05-22 16:03+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
@@ -19,53 +19,128 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.2.2\n"
 
-msgid "Are you sure you want to remove all items?"
-msgstr ""
+msgid "Previous Item"
+msgstr "Önceki öğe"
 
-msgid "Cancel"
-msgstr "İptal"
+msgid "Next Item"
+msgstr "Sonraki öğe"
 
-msgid "Clear history?"
-msgstr ""
+msgid "Private Mode"
+msgstr "Gizli mod"
+
+msgid "Pin Current Item"
+msgstr "Geçerli öğeyi sabitle"
+
+msgid "Clear History"
+msgstr "Geçmişi temizle"
+
+msgid "Settings"
+msgstr "Ayarlar"
+
+msgid "Capture"
+msgstr "Yakala"
+
+msgid "Capture copied items"
+msgstr "Kopyalanan öğeleri yakala"
+
+msgid "[Image]"
+msgstr "[Görsel]"
+
+msgid "Clipboard"
+msgstr "Pano"
 
 msgid "Clipboard updated"
 msgstr "Pano güncellendi"
 
-msgid "Copy time"
-msgstr "Kopyalanma zamanı"
+msgid "Clear history?"
+msgstr "Geçmiş temizlensin mi?"
+
+msgid "Are you sure you want to remove all items?"
+msgstr "Tüm öğeleri kaldırmak istediğinizden emin misiniz?"
 
 msgid "Empty"
-msgstr ""
+msgstr "Boşalt"
 
-msgid "Enable"
-msgstr "Etkinleştir"
-
-msgid "Gnome Clipboard"
-msgstr "Gnome Pano"
-
-msgid "Maximum size of history:"
-msgstr "Azami geçmiş boyutu:"
-
-msgid "Most usage"
-msgstr "En çok"
+msgid "Cancel"
+msgstr "İptal"
 
 msgid "OK"
 msgstr "Tamam"
 
+msgid "Pinned"
+msgstr "Sabitlenmiş"
+
+msgid "Recent History"
+msgstr "Son geçmiş"
+
+msgid "Clipboard is empty"
+msgstr "Pano boş"
+
+msgid "Just now"
+msgstr "Az önce"
+
+#, javascript-format
+msgid "%dm ago"
+msgstr "%d dk önce"
+
+#, javascript-format
+msgid "%dh ago"
+msgstr "%d sa önce"
+
+#, javascript-format
+msgid "%dd ago"
+msgstr "%d gün önce"
+
 msgid "Preferences"
 msgstr "Tercihler"
 
-msgid "Recent usage"
-msgstr "Son kullanım"
+msgid "Maximum size of history:"
+msgstr "Azami geçmiş boyutu:"
 
-msgid "Shortcuts"
-msgstr "Kısayollar"
+msgid "Sort history by:"
+msgstr "Geçmişi şuna göre sırala:"
 
-msgid "This operation cannot be undone."
-msgstr ""
+msgid "Read clipboard by timer:"
+msgstr "Panoyu zamanlayıcıyla oku:"
 
 msgid "Timer interval (Millisecond):"
 msgstr "Zamanlayıcı aralığı (Milisaniye):"
 
-msgid "Type here to search..."
-msgstr "Arama için buraya yazın..."
+msgid "Save only pinned items:"
+msgstr "Yalnızca sabitlenmiş öğeleri kaydet:"
+
+msgid "Show notifications"
+msgstr "Bildirimleri göster"
+
+msgid "Privacy"
+msgstr "Gizlilik"
+
+msgid "Blacklisted App IDs"
+msgstr "Engellenen uygulama kimlikleri"
+
+msgid "Keyboard Shortcuts"
+msgstr "Klavye kısayolları"
+
+msgid "Use formats like <Super>v, <Control><Alt>c, etc."
+msgstr "<Super>v, <Control><Alt>c gibi biçimler kullanın."
+
+msgid "Toggle History Menu"
+msgstr "Geçmiş menüsünü aç/kapat"
+
+msgid "Toggle Private Mode"
+msgstr "Gizli modu aç/kapat"
+
+msgid "Select Next Item"
+msgstr "Sonraki öğeyi seç"
+
+msgid "Select Previous Item"
+msgstr "Önceki öğeyi seç"
+
+msgid "None"
+msgstr "Yok"
+
+msgid "New shortcut..."
+msgstr "Yeni kısayol..."
+
+msgid "Search clipboard..."
+msgstr "Panoda ara..."

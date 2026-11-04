@@ -93,7 +93,7 @@ export class ActionBar
     mainBox.add_child(actionBox);
 
     // Enable Switch
-    this._enableBtn = new PopupMenu.PopupSwitchMenuItem(_("Service"), true);
+    this._enableBtn = new PopupMenu.PopupSwitchMenuItem(_("Capture"), true);
     this._enableBtn.connect('toggled', (_item: any, _state: boolean) => {
         // We might want to notify or trigger something here,
         // but since ClipboardPanel calls .enable() on every check, it works.
