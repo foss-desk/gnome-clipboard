@@ -3,7 +3,6 @@ import GObject from 'gi://GObject';
 import Clutter from 'gi://Clutter';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 import * as utils from './utils.js';
-
 import * as Tooltip from './tooltip.js';
 
 let _ = (s: string) => s;
@@ -32,13 +31,13 @@ export class ActionBar
       activate: false,
       hover: false,
       can_focus: false,
-      style_class: 'action-bar',
+      style_class: 'action-bar-container',
     })
 
     let mainBox = new St.BoxLayout({
       ...utils.boxOrientation(Clutter.Orientation.HORIZONTAL),
       x_expand: true,
-      style_class: 'action-bar-container'
+      style_class: 'action-bar'
     });
 
     // Navigation Group

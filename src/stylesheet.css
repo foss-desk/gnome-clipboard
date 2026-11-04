@@ -56,14 +56,16 @@
 }
 
 /* ─── Action Bar ──────────────────────────────────────────── */
-.gnome-clipboard .action-bar {
-    padding: 8px 12px;
-    background-color: rgba(255, 255, 255, 0.03);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+.gnome-clipboard .action-bar-container {
+    padding: 6px 12px 10px 12px;
 }
 
-.gnome-clipboard .action-bar-container {
+.gnome-clipboard .action-bar {
+    border-radius: 10px;
     padding: 4px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition-duration: 200ms;
 }
 
 .gnome-clipboard .nav-group,
@@ -280,7 +282,7 @@
 
 .gnome-clipboard.light .action-bar {
     background-color: rgba(0, 0, 0, 0.03);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .gnome-clipboard.light .action-btn {
