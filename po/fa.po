@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 01:41+0800\n"
+"POT-Creation-Date: 2026-11-03 18:05+0800\n"
 "PO-Revision-Date: 2021-06-12 16:33+0800\n"
 "Last-Translator: Mostafa <mostafa.sedaghat@gmail.com>\n"
 "Language-Team: Persian\n"
@@ -16,53 +16,128 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Are you sure you want to remove all items?"
-msgstr "آیا اطمینان دارید که می‌خواهید همه آیتمها را حذف کنید؟"
+msgid "Previous Item"
+msgstr "آیتم قبلی"
 
-msgid "Cancel"
-msgstr "لغو"
+msgid "Next Item"
+msgstr "آیتم بعدی"
 
-msgid "Clear history?"
-msgstr "پاک کردن تاریخچه"
+msgid "Private Mode"
+msgstr "حالت خصوصی"
+
+msgid "Pin Current Item"
+msgstr "سنجاق‌کردن آیتم فعلی"
+
+msgid "Clear History"
+msgstr "پاک‌کردن تاریخچه"
+
+msgid "Settings"
+msgstr "تنظیمات"
+
+msgid "Capture"
+msgstr "ضبط"
+
+msgid "Capture copied items"
+msgstr "ضبط آیتم‌های کپی‌شده"
+
+msgid "[Image]"
+msgstr "[تصویر]"
+
+msgid "Clipboard"
+msgstr "کلیپ‌بورد"
 
 msgid "Clipboard updated"
 msgstr "کلیپبورد بروز شد"
 
-msgid "Copy time"
-msgstr "زمان کپی"
+msgid "Clear history?"
+msgstr "پاک کردن تاریخچه"
+
+msgid "Are you sure you want to remove all items?"
+msgstr "آیا اطمینان دارید که می‌خواهید همه آیتمها را حذف کنید؟"
 
 msgid "Empty"
 msgstr "خالی"
 
-msgid "Enable"
-msgstr "فعال"
-
-msgid "Gnome Clipboard"
-msgstr "گنوم کلیپبورد"
-
-msgid "Maximum size of history:"
-msgstr "بیشترین تعداد تاریخچه"
-
-msgid "Most usage"
-msgstr "بیشترین استفاده"
+msgid "Cancel"
+msgstr "لغو"
 
 msgid "OK"
 msgstr "تایید"
 
+msgid "Pinned"
+msgstr "سنجاق‌شده"
+
+msgid "Recent History"
+msgstr "تاریخچه اخیر"
+
+msgid "Clipboard is empty"
+msgstr "کلیپ‌بورد خالی است"
+
+msgid "Just now"
+msgstr "همین حالا"
+
+#, javascript-format
+msgid "%dm ago"
+msgstr "%d دقیقه پیش"
+
+#, javascript-format
+msgid "%dh ago"
+msgstr "%d ساعت پیش"
+
+#, javascript-format
+msgid "%dd ago"
+msgstr "%d روز پیش"
+
 msgid "Preferences"
 msgstr "ترجیحات"
 
-msgid "Recent usage"
-msgstr "آخرین استفاده"
+msgid "Maximum size of history:"
+msgstr "بیشترین تعداد تاریخچه"
 
-msgid "Shortcuts"
-msgstr "میان‌برها"
+msgid "Sort history by:"
+msgstr "مرتب‌سازی تاریخچه بر اساس:"
 
-msgid "This operation cannot be undone."
-msgstr "این عملیات برگشت پذیر نیست."
+msgid "Read clipboard by timer:"
+msgstr "خواندن کلیپ‌بورد با تایمر:"
 
 msgid "Timer interval (Millisecond):"
 msgstr "بازه زمانی تایمر (میلی ثانیه)"
 
-msgid "Type here to search..."
-msgstr "برای جستجو اینجا بنویسید ..."
+msgid "Save only pinned items:"
+msgstr "فقط آیتم‌های سنجاق‌شده ذخیره شود:"
+
+msgid "Show notifications"
+msgstr "نمایش اعلان‌ها"
+
+msgid "Privacy"
+msgstr "حریم خصوصی"
+
+msgid "Blacklisted App IDs"
+msgstr "شناسه برنامه‌های مسدودشده"
+
+msgid "Keyboard Shortcuts"
+msgstr "میانبرهای صفحه‌کلید"
+
+msgid "Use formats like <Super>v, <Control><Alt>c, etc."
+msgstr "از قالب‌هایی مانند <Super>v، <Control><Alt>c و غیره استفاده کنید."
+
+msgid "Toggle History Menu"
+msgstr "باز/بسته کردن منوی تاریخچه"
+
+msgid "Toggle Private Mode"
+msgstr "باز/بسته کردن حالت خصوصی"
+
+msgid "Select Next Item"
+msgstr "انتخاب آیتم بعدی"
+
+msgid "Select Previous Item"
+msgstr "انتخاب آیتم قبلی"
+
+msgid "None"
+msgstr "هیچ‌کدام"
+
+msgid "New shortcut..."
+msgstr "میانبر جدید..."
+
+msgid "Search clipboard..."
+msgstr "جست‌وجو در کلیپ‌بورد..."

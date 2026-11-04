@@ -1,14 +1,14 @@
 # Dutch translation of gnome-clipboard
 # Copyright (C) 2023 gnome-clipboard's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-clipboard package.
-# 
+#
 # Hemen Stoffels <vistausss@fastmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 01:41+0800\n"
+"POT-Creation-Date: 2026-11-03 18:05+0800\n"
 "PO-Revision-Date: 2023-08-14 20:44+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
@@ -19,53 +19,128 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.3.2\n"
 
-msgid "Are you sure you want to remove all items?"
-msgstr "Weet u zeker dat u alle items wilt wissen?"
+msgid "Previous Item"
+msgstr "Vorig item"
 
-msgid "Cancel"
-msgstr "Annuleren"
+msgid "Next Item"
+msgstr "Volgend item"
 
-msgid "Clear history?"
-msgstr "Geschiedenis wissen?"
+msgid "Private Mode"
+msgstr "Privémodus"
+
+msgid "Pin Current Item"
+msgstr "Huidig item vastmaken"
+
+msgid "Clear History"
+msgstr "Geschiedenis wissen"
+
+msgid "Settings"
+msgstr "Instellingen"
+
+msgid "Capture"
+msgstr "Vastleggen"
+
+msgid "Capture copied items"
+msgstr "Gekopieerde items vastleggen"
+
+msgid "[Image]"
+msgstr "[Afbeelding]"
+
+msgid "Clipboard"
+msgstr "Klembord"
 
 msgid "Clipboard updated"
 msgstr "Het klembord is bĳgewerkt"
 
-msgid "Copy time"
-msgstr "Tĳdstip van kopiëren"
+msgid "Clear history?"
+msgstr "Geschiedenis wissen?"
+
+msgid "Are you sure you want to remove all items?"
+msgstr "Weet u zeker dat u alle items wilt wissen?"
 
 msgid "Empty"
 msgstr "Blanco"
 
-msgid "Enable"
-msgstr "Inschakelen"
-
-msgid "Gnome Clipboard"
-msgstr "GNOME Klembord"
-
-msgid "Maximum size of history:"
-msgstr "Geschiedenisomvang:"
-
-msgid "Most usage"
-msgstr "Meestgebruikt"
+msgid "Cancel"
+msgstr "Annuleren"
 
 msgid "OK"
 msgstr "Oké"
 
+msgid "Pinned"
+msgstr "Vastgemaakt"
+
+msgid "Recent History"
+msgstr "Recente geschiedenis"
+
+msgid "Clipboard is empty"
+msgstr "Klembord is leeg"
+
+msgid "Just now"
+msgstr "Zojuist"
+
+#, javascript-format
+msgid "%dm ago"
+msgstr "%d min. geleden"
+
+#, javascript-format
+msgid "%dh ago"
+msgstr "%d uur geleden"
+
+#, javascript-format
+msgid "%dd ago"
+msgstr "%d dagen geleden"
+
 msgid "Preferences"
 msgstr "Voorkeuren"
 
-msgid "Recent usage"
-msgstr "Onlangs gebruikt"
+msgid "Maximum size of history:"
+msgstr "Geschiedenisomvang:"
 
-msgid "Shortcuts"
-msgstr "Sneltoetsen"
+msgid "Sort history by:"
+msgstr "Geschiedenis sorteren op:"
 
-msgid "This operation cannot be undone."
-msgstr "Let op: deze actie is onomkeerbaar."
+msgid "Read clipboard by timer:"
+msgstr "Klembord met timer uitlezen:"
 
 msgid "Timer interval (Millisecond):"
 msgstr "Tĳdkloktussenpoos (in ms):"
 
-msgid "Type here to search..."
-msgstr "Typ hier om te zoeken…"
+msgid "Save only pinned items:"
+msgstr "Alleen vastgemaakte items opslaan:"
+
+msgid "Show notifications"
+msgstr "Meldingen tonen"
+
+msgid "Privacy"
+msgstr "Privacy"
+
+msgid "Blacklisted App IDs"
+msgstr "Geblokkeerde app-ID's"
+
+msgid "Keyboard Shortcuts"
+msgstr "Sneltoetsen"
+
+msgid "Use formats like <Super>v, <Control><Alt>c, etc."
+msgstr "Gebruik indelingen zoals <Super>v, <Control><Alt>c, enz."
+
+msgid "Toggle History Menu"
+msgstr "Geschiedenismenu openen/sluiten"
+
+msgid "Toggle Private Mode"
+msgstr "Privémodus in-/uitschakelen"
+
+msgid "Select Next Item"
+msgstr "Volgend item selecteren"
+
+msgid "Select Previous Item"
+msgstr "Vorig item selecteren"
+
+msgid "None"
+msgstr "Geen"
+
+msgid "New shortcut..."
+msgstr "Nieuwe sneltoets..."
+
+msgid "Search clipboard..."
+msgstr "Klembord doorzoeken..."
