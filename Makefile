@@ -64,7 +64,7 @@ disable:
 	@gnome-extensions disable $(UUID)
 	@echo "$(GREEN)Extension disabled!$(NC)"
 
-update-translations:
+update-translations: compile
 	@xgettext -L JavaScript --no-wrap --no-location --sort-by-file --from-code=UTF-8 -k_ -kN_ -o $(POT_FILE) $(DIST_DIR)/*.js --package-name $(EXT_NAME)
 	@for f in ./po/*.po ; do \
 		msgmerge --no-location -N $$f $(POT_FILE) -o $$f ;\
