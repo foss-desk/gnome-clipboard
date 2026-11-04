@@ -1,4 +1,5 @@
 import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
 import Gtk from 'gi://Gtk';
 import Adw from 'gi://Adw';
 import Gdk from 'gi://Gdk';
@@ -140,6 +141,25 @@ export default class GnomeClipboardPreferences extends ExtensionPreferences {
         );
         notificationsRow.add_suffix(notificationsSwitch);
         group.add(notificationsRow);
+
+        // Open Data Folder
+        const dataFolderRow = new Adw.ActionRow({
+            title: this.gettext('Data folder'),
+            subtitle: this.gettext('Open the folder where clipboard history is stored'),
+        });
+        const openDataFolderButton = new Gtk.Button({
+            label: this.gettext('Open'),
+            valign: Gtk.Align.CENTER,
+            css_classes: ['pref-input'],
+        });
+        openDataFolderButton.connect('clicked', () => {
+            const folderPath = GLib.build_filenamev([GLib.get_user_data_dir(), this.uuid]);
+            const folderUri = Gio.File.new_for_path(folderPath).get_uri();
+            Gtk.show_uri(window, folderUri, Gdk.CURRENT_TIME);
+        });
+        dataFolderRow.add_suffix(openDataFolderButton);
+        dataFolderRow.set_activatable_widget(openDataFolderButton);
+        group.add(dataFolderRow);
 
         // Privacy Group
         const privacyGroup = new Adw.PreferencesGroup({
