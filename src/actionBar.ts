@@ -16,7 +16,6 @@ export class ActionBar
   extends PopupMenu.PopupBaseMenuItem {
 
   private _privateBtn: any;
-  private _pinBtn: any;
   private _clearBtn: any;
   private _settingsBtn: any;
   private _prevBtn: any;
@@ -71,9 +70,6 @@ export class ActionBar
     this._privateBtn = this._createIconButton('view-conceal-symbolic');
     Tooltip.attachTooltip(this._privateBtn, () => _('Private Mode'));
 
-    this._pinBtn = this._createIconButton('view-pin-symbolic');
-    Tooltip.attachTooltip(this._pinBtn, () => _('Pin Current Item'));
-
     this._clearBtn = this._createIconButton('edit-delete-symbolic', 'action-btn-danger');
     Tooltip.attachTooltip(this._clearBtn, () => _('Clear History'));
 
@@ -81,7 +77,6 @@ export class ActionBar
     Tooltip.attachTooltip(this._settingsBtn, () => _('Settings'));
 
     actionBox.add_child(this._privateBtn);
-    actionBox.add_child(this._pinBtn);
     actionBox.add_child(this._clearBtn);
     actionBox.add_child(this._settingsBtn);
     mainBox.add_child(actionBox);
@@ -129,10 +124,6 @@ export class ActionBar
 
   onClearHistory(callback: () => void) {
     this._clearBtn.connect('clicked', callback);
-  }
-
-  onPin(callback: () => void) {
-    this._pinBtn.connect('clicked', callback);
   }
 
   onTogglePrivateMode(callback: (active: boolean) => void) {
