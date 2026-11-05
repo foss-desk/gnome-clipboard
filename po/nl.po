@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-04 15:23+0800\n"
+"POT-Creation-Date: 2026-11-05 20:38+0800\n"
 "PO-Revision-Date: 2023-08-14 20:44+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
@@ -24,12 +24,6 @@ msgstr "Vorig item"
 
 msgid "Next Item"
 msgstr "Volgend item"
-
-msgid "Private Mode"
-msgstr "Privémodus"
-
-msgid "Pin Current Item"
-msgstr "Huidig item vastmaken"
 
 msgid "Clear History"
 msgstr "Geschiedenis wissen"
@@ -85,26 +79,32 @@ msgstr "Verwijderen"
 msgid "Just now"
 msgstr "Zojuist"
 
-#, javascript-format
-msgid "%dm ago"
-msgstr "%d min. geleden"
+msgid "1 minute ago"
+msgstr "1 minuut geleden"
 
 #, javascript-format
-msgid "%dh ago"
+msgid "%d minutes ago"
+msgstr "%d minuten geleden"
+
+#, javascript-format
+msgid "%d hours ago"
 msgstr "%d uur geleden"
 
+msgid "1 hour ago"
+msgstr "1 uur geleden"
+
 #, javascript-format
-msgid "%dd ago"
+msgid "%d days ago"
 msgstr "%d dagen geleden"
+
+msgid "1 day ago"
+msgstr "1 dag geleden"
 
 msgid "Preferences"
 msgstr "Voorkeuren"
 
 msgid "Maximum size of history:"
 msgstr "Geschiedenisomvang:"
-
-msgid "Sort history by:"
-msgstr "Geschiedenis sorteren op:"
 
 msgid "Read clipboard by timer:"
 msgstr "Klembord met timer uitlezen:"
@@ -134,7 +134,9 @@ msgid "Store images:"
 msgstr "Afbeeldingen opslaan:"
 
 msgid "Save images copied to the clipboard in the history"
-msgstr "Afbeeldingen die naar het klembord worden gekopieerd in de geschiedenis opslaan"
+msgstr ""
+"Afbeeldingen die naar het klembord worden gekopieerd in de geschiedenis "
+"opslaan"
 
 msgid "Maximum image size (MB):"
 msgstr "Maximale afbeeldingsgrootte (MB):"
@@ -157,9 +159,6 @@ msgstr "Gebruik indelingen zoals <Super>v, <Control><Alt>c, enz."
 msgid "Toggle History Menu"
 msgstr "Geschiedenismenu openen/sluiten"
 
-msgid "Toggle Private Mode"
-msgstr "Privémodus in-/uitschakelen"
-
 msgid "Select Next Item"
 msgstr "Volgend item selecteren"
 
@@ -174,6 +173,21 @@ msgstr "Nieuwe sneltoets..."
 
 msgid "Search clipboard..."
 msgstr "Klembord doorzoeken..."
+
+#, javascript-format
+#~ msgid "%dm ago"
+#~ msgstr "%d min. geleden"
+
+#, javascript-format
+#~ msgid "%dh ago"
+#~ msgstr "%d uur geleden"
+
+#, javascript-format
+#~ msgid "%dd ago"
+#~ msgstr "%d dagen geleden"
+
+#~ msgid "Pin Current Item"
+#~ msgstr "Huidig item vastmaken"
 
 #~ msgid "Capture copied items"
 #~ msgstr "Gekopieerde items vastleggen"

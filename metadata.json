@@ -1,18 +1,10 @@
 {
-  "shell-version": [
-    "45",
-    "46",
-    "47",
-    "48",
-    "49",
-    "50",
-    "51"
-  ],
-  "version": 70,
-  "gettext-domain" : "gnome-clipboard",
-  "settings-schema": "org.gnome.shell.extensions.gnome-clipboard",
-  "uuid": "gnome-clipboard@b00f.github.io",
-  "name": "Gnome Clipboard",
-  "description": "[Accesses Clipboard] A gnome shell extension to manage and keep track of your clipboard history. This extension monitors the system clipboard to provide history management and pinning features.",
-  "url": "https://github.com/b00f/gnome-clipboard"
+    "shell-version": ["45", "46", "47", "48", "49", "50", "51"],
+    "version": 70,
+    "gettext-domain": "gnome-clipboard",
+    "settings-schema": "org.gnome.shell.extensions.gnome-clipboard",
+    "uuid": "gnome-clipboard@b00f.github.io",
+    "name": "Gnome Clipboard",
+    "description": "[Accesses Clipboard] A gnome shell extension to manage and keep track of your clipboard history. This extension monitors the system clipboard to provide history management and pinning features.",
+    "url": "https://github.com/foss-desk/gnome-clipboard"
 }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-04 15:23+0800\n"
+"POT-Creation-Date: 2026-11-05 20:38+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,12 +21,6 @@ msgid "Previous Item"
 msgstr ""
 
 msgid "Next Item"
-msgstr ""
-
-msgid "Private Mode"
-msgstr ""
-
-msgid "Pin Current Item"
 msgstr ""
 
 msgid "Clear History"
@@ -83,25 +77,31 @@ msgstr ""
 msgid "Just now"
 msgstr ""
 
-#, javascript-format
-msgid "%dm ago"
+msgid "1 minute ago"
 msgstr ""
 
 #, javascript-format
-msgid "%dh ago"
+msgid "%d minutes ago"
 msgstr ""
 
 #, javascript-format
-msgid "%dd ago"
+msgid "%d hours ago"
+msgstr ""
+
+msgid "1 hour ago"
+msgstr ""
+
+#, javascript-format
+msgid "%d days ago"
+msgstr ""
+
+msgid "1 day ago"
 msgstr ""
 
 msgid "Preferences"
 msgstr ""
 
 msgid "Maximum size of history:"
-msgstr ""
-
-msgid "Sort history by:"
 msgstr ""
 
 msgid "Read clipboard by timer:"
@@ -153,9 +153,6 @@ msgid "Use formats like <Super>v, <Control><Alt>c, etc."
 msgstr ""
 
 msgid "Toggle History Menu"
-msgstr ""
-
-msgid "Toggle Private Mode"
 msgstr ""
 
 msgid "Select Next Item"

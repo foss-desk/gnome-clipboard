@@ -8,11 +8,6 @@
       <summary>Maximum size of history</summary>
     </key>
 
-    <key type="u" name="history-sort">
-      <default>0</default>
-      <summary>Sort history by</summary>
-    </key>
-
     <key type="b" name="clipboard-timer">
       <default>false</default>
       <summary>Read clipboard by timer</summary>
@@ -45,11 +40,6 @@
       <description>Images larger than this size, in megabytes, are ignored.</description>
     </key>
 
-    <key type="b" name="private-mode">
-      <default>false</default>
-      <summary>Private mode</summary>
-    </key>
-
     <key type="as" name="blacklist">
       <default>[]</default>
       <summary>Application blacklist</summary>
@@ -65,12 +55,6 @@
       <default>[]</default>
       <summary>Shortcut to clear history</summary>
       <description>Keyboard shortcut to clear all non-pinned clipboard items.</description>
-    </key>
-
-    <key type="as" name="shortcut-private-mode">
-      <default>[]</default>
-      <summary>Shortcut to toggle private mode</summary>
-      <description>Keyboard shortcut to enable/disable private mode (stopping clipboard monitoring).</description>
     </key>
 
     <key type="as" name="shortcut-next">

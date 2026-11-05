@@ -1,79 +1,76 @@
-import * as utils from './utils.js';
-
-let _ = (s: string) => s;
-
-export function init(gettextFunc: (s: string) => string) {
-    _ = gettextFunc;
-}
-
 export enum ClipboardItemType {
     TEXT,
-    IMAGE
+    IMAGE,
 }
 
-// Image files are content-addressed: new ones are named `<md5>.png`, while
-// files written before the storage refactor kept the numeric hash as the
-// filename. Recover the same numeric id in both cases so selection, dedupe and
-// next/prev keep working for old and new history entries alike.
-function imageID(path: string): number {
-  const name = path.slice(path.lastIndexOf('/') + 1);
-
-  const legacy = name.match(/^(-?\d+)\.png$/);
-  if (legacy) {
-    return Number(legacy[1]);
-  }
-
-  const contentHash = name.match(/^([0-9a-f]{32})\.png$/i);
-  if (contentHash) {
-    return utils.hashCode(contentHash[1]);
-  }
-
-  return utils.hashCode(path);
+// The slice of the storage layer an item needs to persist and release what it
+// owns.
+export interface Store {
+    saveImage(id: number, bytes: GLib.Bytes): Promise<string | null>;
+    deleteImage(imageName: string): void;
 }
 
-export class ClipboardItem {
-    public text: string;
-    public usage: number;
+// On-disk / wire representation.
+export interface ClipboardItemData {
+    type: ClipboardItemType;
+    id: number;
+    text?: string;
+    pinned: boolean;
+    copiedAt: number;
+}
+
+type ClipboardItemFactory = (raw: any) => ClipboardItem;
+
+export abstract class ClipboardItem {
+    // The unique identity of this item, derived from its content.
+    public readonly id: number;
+
     public pinned: boolean;
     public copiedAt: number;
-    public usedAt: number;
-    public type: ClipboardItemType;
-    public imagePath: string | null;
 
-    // id() hashes the full item text and is called once per item on every menu
-    // rebuild (plus once per probe in lookups). The identity of an item never
-    // changes after construction, so compute it lazily and keep it.
-    private _id: number | null = null;
+    // Wire discriminator. Branch on `instanceof` for per-type behaviour.
+    public abstract readonly type: ClipboardItemType;
 
-    constructor(text: string, usage: number, pinned: boolean, copiedAt: number, usedAt: number,
-                type: ClipboardItemType = ClipboardItemType.TEXT, imagePath: string | null = null) {
-      this.text = text;
-      this.usage = usage;
-      this.pinned = pinned;
-      this.copiedAt = copiedAt;
-      this.usedAt = usedAt;
-      this.type = type;
-      this.imagePath = imagePath;
+    constructor(id: number) {
+        this.id = id;
+        this.pinned = false;
+        this.copiedAt = Date.now();
     }
 
-    public id(): number {
-      if (this._id === null) {
-        this._id = (this.type === ClipboardItemType.IMAGE && this.imagePath)
-          ? imageID(this.imagePath)
-          : utils.hashCode(this.text);
-      }
-      return this._id;
+    public abstract notification(): string;
+
+    // The text matched by the search box. Images have no user-visible text.
+    public abstract searchText(): string;
+
+    public abstract displayWidget(): any;
+
+    // Put this item onto the system clipboard.
+    public abstract copyToClipboard(): void;
+
+    // Release the resources this item owns (an image owns a file on disk).
+    public abstract dispose(store: Store): void;
+
+    public abstract toJSON(): ClipboardItemData;
+
+    // `fromJSON` cannot live only on the subclasses: static methods are not
+    // polymorphic, so this base router maps the stored `type` to the right
+    // subclass. Each subclass registers itself when its module is loaded.
+    private static _factories = new Map<ClipboardItemType, ClipboardItemFactory>();
+
+    public static registerType(type: ClipboardItemType, factory: ClipboardItemFactory): void {
+        ClipboardItem._factories.set(type, factory);
     }
 
-    public display(): string {
-      if (this.type === ClipboardItemType.IMAGE) {
-        return _("[Image]");
-      }
-      return utils.truncate(this.text, 32);
-    }
+    public static fromJSON(raw: any): ClipboardItem {
+        const type =
+            raw?.type === ClipboardItemType.IMAGE
+                ? ClipboardItemType.IMAGE
+                : ClipboardItemType.TEXT;
 
-    public updateLastUsed() {
-      this.usage++;
-      this.usedAt = Date.now();
+        const factory = ClipboardItem._factories.get(type);
+        if (!factory) {
+            throw new Error(`no clipboard item registered for type ${type}`);
+        }
+        return factory(raw);
     }
-  }
+}

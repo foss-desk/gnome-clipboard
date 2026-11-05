@@ -8,65 +8,60 @@ export function init(gettextFunc: (s: string) => string) {
     _ = gettextFunc;
 }
 
-export class SearchBox
-  extends PopupMenu.PopupBaseMenuItem {
+export class SearchBox extends PopupMenu.PopupBaseMenuItem {
+    public searchEntry: St.Entry;
 
-  public searchEntry: St.Entry;
+    static {
+        GObject.registerClass(this);
+    }
 
-  static {
-    GObject.registerClass(this);
-  }
+    constructor() {
+        super({
+            reactive: false,
+            can_focus: false,
+            style_class: 'search-box-container',
+        });
 
-  constructor() {
-    super({
-      reactive: false,
-      can_focus: false,
-      style_class: 'search-box-container'
-    })
+        this.searchEntry = new St.Entry({
+            style_class: 'search-box',
+            can_focus: true,
+            hint_text: _('Search clipboard...'),
+            track_hover: true,
+            x_expand: true,
+        });
 
-    this.searchEntry = new St.Entry({
-      style_class: 'search-box',
-      can_focus: true,
-      hint_text: _('Search clipboard...'),
-      track_hover: true,
-      x_expand: true,
-    });
+        // Add search icon
+        const searchIcon = new St.Icon({
+            icon_name: 'edit-find-symbolic',
+            style_class: 'search-box-icon',
+            icon_size: 16,
+        });
+        this.searchEntry.set_primary_icon(searchIcon);
 
-    // Add search icon
-    let searchIcon = new St.Icon({
-        icon_name: 'edit-find-symbolic',
-        style_class: 'search-box-icon',
-        icon_size: 16,
-    });
-    this.searchEntry.set_primary_icon(searchIcon);
+        // Clear button
+        const clearIcon = new St.Icon({
+            icon_name: 'edit-clear-symbolic',
+            style_class: 'search-box-icon',
+            icon_size: 16,
+        });
 
-    // Clear button
-    let clearIcon = new St.Icon({
-        icon_name: 'edit-clear-symbolic',
-        style_class: 'search-box-icon',
-        icon_size: 16,
-    });
-    
-    this.searchEntry.set_secondary_icon(clearIcon);
-    this.searchEntry.connect('secondary-icon-clicked', () => {
-        this.searchEntry.set_text('');
-    });
+        this.searchEntry.set_secondary_icon(clearIcon);
+        this.searchEntry.connect('secondary-icon-clicked', () => {
+            this.searchEntry.set_text('');
+        });
 
-    this.add_child(this.searchEntry);
-  }
+        this.add_child(this.searchEntry);
+    }
 
-  onTextChanged(callback: any) {
-    this.searchEntry.get_clutter_text().connect(
-      'text-changed',
-      callback
-    );
-  }
+    onTextChanged(callback: any) {
+        this.searchEntry.get_clutter_text().connect('text-changed', callback);
+    }
 
-  getText() {
-    return this.searchEntry.get_text();
-  }
+    getText() {
+        return this.searchEntry.get_text();
+    }
 
-  setText(text: string) {
-    return this.searchEntry.set_text(text);
-  }
+    setText(text: string) {
+        return this.searchEntry.set_text(text);
+    }
 }

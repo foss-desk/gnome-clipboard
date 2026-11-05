@@ -1,15 +1,48 @@
 // GNOME Shell ESM Module Declarations
-declare module 'gi://St' { const St: any; export default St; }
-declare module 'gi://GObject' { const GObject: any; export default GObject; }
-declare module 'gi://Gio' { const Gio: any; export default Gio; }
-declare module 'gi://GLib' { const GLib: any; export default GLib; }
-declare module 'gi://Meta' { const Meta: any; export default Meta; }
-declare module 'gi://Shell' { const Shell: any; export default Shell; }
-declare module 'gi://Clutter' { const Clutter: any; export default Clutter; }
-declare module 'gi://GdkPixbuf' { const GdkPixbuf: any; export default GdkPixbuf; }
-declare module 'gi://Gtk' { const Gtk: any; export default Gtk; }
-declare module 'gi://Adw' { const Adw: any; export default Adw; }
-declare module 'gi://Gdk' { const Gdk: any; export default Gdk; }
+declare module 'gi://St' {
+    const St: any;
+    export default St;
+}
+declare module 'gi://GObject' {
+    const GObject: any;
+    export default GObject;
+}
+declare module 'gi://Gio' {
+    const Gio: any;
+    export default Gio;
+}
+declare module 'gi://GLib' {
+    const GLib: any;
+    export default GLib;
+}
+declare module 'gi://Meta' {
+    const Meta: any;
+    export default Meta;
+}
+declare module 'gi://Shell' {
+    const Shell: any;
+    export default Shell;
+}
+declare module 'gi://Clutter' {
+    const Clutter: any;
+    export default Clutter;
+}
+declare module 'gi://GdkPixbuf' {
+    const GdkPixbuf: any;
+    export default GdkPixbuf;
+}
+declare module 'gi://Gtk' {
+    const Gtk: any;
+    export default Gtk;
+}
+declare module 'gi://Adw' {
+    const Adw: any;
+    export default Adw;
+}
+declare module 'gi://Gdk' {
+    const Gdk: any;
+    export default Gdk;
+}
 declare namespace Gdk {
     export const KEY_Escape: any;
     export const KEY_BackSpace: any;
@@ -25,11 +58,16 @@ declare namespace Gdk {
     export const KEY_Super_R: any;
 }
 
+declare namespace GLib {
+    export type Bytes = any;
+}
+
 declare namespace St {
     export type ScrollView = any;
     export type Entry = any;
     export type Widget = any;
     export type Bin = any;
+    export type Clipboard = any;
     export const ClipboardType: any;
     export const PolicyType: any;
 }
@@ -50,6 +88,8 @@ declare namespace Gtk {
     export type SpinButton = any;
     export type Switch = any;
     export type Adjustment = any;
+    export type DropDown = any;
+    export const StringList: any;
     export const Align: any;
 }
 
@@ -63,14 +103,14 @@ declare module 'resource:///org/gnome/shell/ui/popupMenu.js' {
         constructor(params?: any);
         add_child(child: any): void;
         actor: any;
-        connect(signal: string, callback: Function): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         disconnect(id: number): void;
         destroy(): void;
         visible: boolean;
         setOrnament(ornament: any): void;
         _ornamentLabel: any;
     }
-    export class PopupSeparatorMenuItem extends PopupBaseMenuItem { }
+    export class PopupSeparatorMenuItem extends PopupBaseMenuItem {}
     export class PopupSwitchMenuItem extends PopupBaseMenuItem {
         constructor(label: string, active: boolean, params?: any);
         state: boolean;
@@ -80,7 +120,7 @@ declare module 'resource:///org/gnome/shell/ui/popupMenu.js' {
         addMenuItem(item: any): void;
         removeAll(): void;
         _getMenuItems(): any[];
-        connect(signal: string, callback: Function): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         disconnect(id: number): void;
     }
     export const Ornament: any;
@@ -92,7 +132,7 @@ declare module 'resource:///org/gnome/shell/ui/panelMenu.js' {
         menu: any;
         add_child(child: any): void;
         emit(signal: string, ...args: any[]): void;
-        connect(signal: string, callback: Function): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         destroy(): void;
     }
 }

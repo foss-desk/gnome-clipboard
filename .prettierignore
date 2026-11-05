@@ -1,0 +1,16 @@
+# Build artifacts
+dist/
+src/build/
+*.zip
+*.mo
+*.compiled
+
+# Generated / non-source content
+node_modules/
+po/
+schemas/
+test-data/
+media/
+
+# Package-manager metadata
+package-lock.json
