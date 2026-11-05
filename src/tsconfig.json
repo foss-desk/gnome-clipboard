@@ -8,17 +8,12 @@
         "strict": true,
         "outDir": "build",
         "forceConsistentCasingInFileNames": true,
-        "lib": [
-            "es2022",
-            "dom"
-        ],
+        "lib": ["es2022", "dom"],
         "pretty": true,
         "removeComments": true,
         "incremental": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true
     },
-    "include": [
-        "*.ts"
-    ]
+    "include": ["*.ts"]
 }

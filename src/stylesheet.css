@@ -182,7 +182,7 @@
     padding: 5px;
     margin-left: 4px;
     transition-duration: 150ms;
-    opacity: 0.0;
+    opacity: 0;
 }
 
 .gnome-clipboard .clipboard-item:hover .item-action-btn {
@@ -191,12 +191,12 @@
 
 .gnome-clipboard .item-action-btn:hover {
     background-color: rgba(255, 255, 255, 0.1);
-    opacity: 1.0;
+    opacity: 1;
 }
 
 .gnome-clipboard .item-action-btn.pinned {
     color: #f5c211;
-    opacity: 1.0;
+    opacity: 1;
 }
 
 /* ─── Image Previews ──────────────────────────────────────── */

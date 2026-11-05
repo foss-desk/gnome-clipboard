@@ -39,35 +39,10 @@ export default class GnomeClipboardPreferences extends ExtensionPreferences {
             Settings.HISTORY_SIZE,
             historySizeSpin,
             'value',
-            Gio.SettingsBindFlags.DEFAULT
+            Gio.SettingsBindFlags.DEFAULT,
         );
         historySizeRow.add_suffix(historySizeSpin);
         group.add(historySizeRow);
-
-        // History Sort (Simplified for now, using Spin or just keeping ComboBox)
-        // For brevity and compatibility, I'll use a simpler representation or Adw.ComboRow
-        const historySortRow = new Adw.ActionRow({
-            title: this.gettext('Sort history by:'),
-        });
-        // Legacy ComboBox logic is complex in GTK4, let's use a simpler SpinButton or skip for now
-        // or just implement a basic version.
-        const historySortSpin = new Gtk.SpinButton({
-            valign: Gtk.Align.CENTER,
-            css_classes: ['pref-input'],
-            adjustment: new Gtk.Adjustment({
-                lower: 0,
-                upper: 2,
-                step_increment: 1,
-            }),
-        });
-        settings.bind(
-            Settings.HISTORY_SORT,
-            historySortSpin,
-            'value',
-            Gio.SettingsBindFlags.DEFAULT
-        );
-        historySortRow.add_suffix(historySortSpin);
-        group.add(historySortRow);
 
         // Clipboard Timer
         const timerRow = new Adw.ActionRow({
@@ -81,7 +56,7 @@ export default class GnomeClipboardPreferences extends ExtensionPreferences {
             Settings.CLIPBOARD_TIMER,
             timerSwitch,
             'active',
-            Gio.SettingsBindFlags.DEFAULT
+            Gio.SettingsBindFlags.DEFAULT,
         );
         timerRow.add_suffix(timerSwitch);
         group.add(timerRow);
@@ -103,7 +78,7 @@ export default class GnomeClipboardPreferences extends ExtensionPreferences {
             Settings.TIMER_INTERVAL,
             intervalSpin,
             'value',
-            Gio.SettingsBindFlags.DEFAULT
+            Gio.SettingsBindFlags.DEFAULT,
         );
         intervalRow.add_suffix(intervalSpin);
         group.add(intervalRow);
@@ -120,7 +95,7 @@ export default class GnomeClipboardPreferences extends ExtensionPreferences {
             Settings.SAVE_PINNED,
             savePinnedSwitch,
             'active',
-            Gio.SettingsBindFlags.DEFAULT
+            Gio.SettingsBindFlags.DEFAULT,
         );
         savePinnedRow.add_suffix(savePinnedSwitch);
         group.add(savePinnedRow);
@@ -137,7 +112,7 @@ export default class GnomeClipboardPreferences extends ExtensionPreferences {
             Settings.SHOW_NOTIFICATIONS,
             notificationsSwitch,
             'active',
-            Gio.SettingsBindFlags.DEFAULT
+            Gio.SettingsBindFlags.DEFAULT,
         );
         notificationsRow.add_suffix(notificationsSwitch);
         group.add(notificationsRow);
@@ -180,7 +155,7 @@ export default class GnomeClipboardPreferences extends ExtensionPreferences {
             Settings.STORE_IMAGES,
             storeImagesSwitch,
             'active',
-            Gio.SettingsBindFlags.DEFAULT
+            Gio.SettingsBindFlags.DEFAULT,
         );
         storeImagesRow.add_suffix(storeImagesSwitch);
         storeImagesRow.set_activatable_widget(storeImagesSwitch);
@@ -204,7 +179,7 @@ export default class GnomeClipboardPreferences extends ExtensionPreferences {
             Settings.MAX_IMAGE_SIZE,
             maxImageSizeSpin,
             'value',
-            Gio.SettingsBindFlags.DEFAULT
+            Gio.SettingsBindFlags.DEFAULT,
         );
         maxImageSizeRow.add_suffix(maxImageSizeSpin);
         maxImageSizeRow.set_activatable_widget(maxImageSizeSpin);
@@ -225,7 +200,11 @@ export default class GnomeClipboardPreferences extends ExtensionPreferences {
         const blacklistSettings = settings.get_strv(Settings.BLACKLIST).join(', ');
         blacklistRow.set_text(blacklistSettings);
         blacklistRow.connect('changed', () => {
-            const list = blacklistRow.get_text().split(',').map((s: string) => s.trim()).filter((s: string) => s.length > 0);
+            const list = blacklistRow
+                .get_text()
+                .split(',')
+                .map((s: string) => s.trim())
+                .filter((s: string) => s.length > 0);
             settings.set_strv(Settings.BLACKLIST, list);
         });
         privacyGroup.add(blacklistRow);
@@ -243,7 +222,6 @@ export default class GnomeClipboardPreferences extends ExtensionPreferences {
 
         addShortcutRow(Settings.SHORTCUT_MENU, this.gettext('Toggle History Menu'));
         addShortcutRow(Settings.SHORTCUT_CLEAR, this.gettext('Clear History'));
-        addShortcutRow(Settings.SHORTCUT_PRIVATE_MODE, this.gettext('Toggle Private Mode'));
         addShortcutRow(Settings.SHORTCUT_NEXT, this.gettext('Select Next Item'));
         addShortcutRow(Settings.SHORTCUT_PREV, this.gettext('Select Previous Item'));
     }
@@ -259,7 +237,7 @@ export default class GnomeClipboardPreferences extends ExtensionPreferences {
                 Gtk.StyleContext.add_provider_for_display(
                     display,
                     provider,
-                    Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+                    Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
                 );
             }
         } catch (error) {
@@ -294,51 +272,59 @@ export default class GnomeClipboardPreferences extends ExtensionPreferences {
             button.add_css_class('suggested-action');
         });
 
-        controller.connect('key-pressed', (_controller: any, keyval: any, _keycode: any, state: any) => {
-            if (!isRecording) return false;
+        controller.connect(
+            'key-pressed',
+            (_controller: any, keyval: any, _keycode: any, state: any) => {
+                if (!isRecording) return false;
 
-            // Handle Escape to cancel
-            if (keyval === Gdk.KEY_Escape) {
-                isRecording = false;
-                button.remove_css_class('suggested-action');
-                updateButtonLabel();
-                return true;
-            }
+                // Handle Escape to cancel
+                if (keyval === Gdk.KEY_Escape) {
+                    isRecording = false;
+                    button.remove_css_class('suggested-action');
+                    updateButtonLabel();
+                    return true;
+                }
 
-            // Handle Backspace to clear
-            if (keyval === Gdk.KEY_BackSpace) {
-                isRecording = false;
-                button.remove_css_class('suggested-action');
-                settings.set_strv(key, []);
-                updateButtonLabel();
-                return true;
-            }
+                // Handle Backspace to clear
+                if (keyval === Gdk.KEY_BackSpace) {
+                    isRecording = false;
+                    button.remove_css_class('suggested-action');
+                    settings.set_strv(key, []);
+                    updateButtonLabel();
+                    return true;
+                }
 
-            // Mask out unwanted modifiers (like NumLock)
-            const mask = state & Gtk.accelerator_get_default_mod_mask();
+                // Mask out unwanted modifiers (like NumLock)
+                const mask = state & Gtk.accelerator_get_default_mod_mask();
 
-            // Only accept if at least one modifier is pressed OR it's a function key
-            const isModifier = [
-                Gdk.KEY_Shift_L, Gdk.KEY_Shift_R,
-                Gdk.KEY_Control_L, Gdk.KEY_Control_R,
-                Gdk.KEY_Alt_L, Gdk.KEY_Alt_R,
-                Gdk.KEY_Meta_L, Gdk.KEY_Meta_R,
-                Gdk.KEY_Super_L, Gdk.KEY_Super_R
-            ].includes(keyval);
+                // Only accept if at least one modifier is pressed OR it's a function key
+                const isModifier = [
+                    Gdk.KEY_Shift_L,
+                    Gdk.KEY_Shift_R,
+                    Gdk.KEY_Control_L,
+                    Gdk.KEY_Control_R,
+                    Gdk.KEY_Alt_L,
+                    Gdk.KEY_Alt_R,
+                    Gdk.KEY_Meta_L,
+                    Gdk.KEY_Meta_R,
+                    Gdk.KEY_Super_L,
+                    Gdk.KEY_Super_R,
+                ].includes(keyval);
 
-            if (isModifier) return true;
+                if (isModifier) return true;
 
-            const accel = Gtk.accelerator_name(keyval, mask);
-            if (accel) {
-                settings.set_strv(key, [accel]);
-                isRecording = false;
-                button.remove_css_class('suggested-action');
-                updateButtonLabel();
-                return true;
-            }
+                const accel = Gtk.accelerator_name(keyval, mask);
+                if (accel) {
+                    settings.set_strv(key, [accel]);
+                    isRecording = false;
+                    button.remove_css_class('suggested-action');
+                    updateButtonLabel();
+                    return true;
+                }
 
-            return false;
-        });
+                return false;
+            },
+        );
 
         // Reset state if focus is lost
         button.connect('state-flags-changed', () => {

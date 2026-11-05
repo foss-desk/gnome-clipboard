@@ -1,0 +1,21 @@
+{
+    "name": "gnome-clipboard",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Lint/format tooling for the Gnome Clipboard GNOME Shell extension",
+    "scripts": {
+        "typecheck": "tsc --noEmit --project src",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "check": "npm run typecheck && npm run lint && npm run format:check"
+    },
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "eslint": "^10.14.0",
+        "eslint-config-prettier": "^10.1.8",
+        "prettier": "^3.9.10",
+        "typescript-eslint": "^8.72.1"
+    }
+}

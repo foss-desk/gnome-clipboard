@@ -1,6 +1,5 @@
-
 // In GNOME 45+, we can use console methods for logging
-// which automatically include the extension name if configured properly, 
+// which automatically include the extension name if configured properly,
 // but for now we'll stick to a similar pattern as before.
 
 export enum LOG_LEVELS {
@@ -8,7 +7,7 @@ export enum LOG_LEVELS {
     ERROR,
     WARN,
     INFO,
-    DEBUG
+    DEBUG,
 }
 
 // We'll need to pass the settings or extension instance here
@@ -31,21 +30,17 @@ export function log(text: string) {
 }
 
 export function error(text: string) {
-    if (log_level() >= LOG_LEVELS.ERROR)
-        console.error(`Gnome Clipboard: [ERROR] ${text}`);
+    if (log_level() >= LOG_LEVELS.ERROR) console.error(`Gnome Clipboard: [ERROR] ${text}`);
 }
 
 export function warn(text: string) {
-    if (log_level() >= LOG_LEVELS.WARN)
-        console.warn(`Gnome Clipboard: [WARN] ${text}`);
+    if (log_level() >= LOG_LEVELS.WARN) console.warn(`Gnome Clipboard: [WARN] ${text}`);
 }
 
 export function info(text: string) {
-    if (log_level() >= LOG_LEVELS.INFO)
-        console.info(`Gnome Clipboard: [INFO] ${text}`);
+    if (log_level() >= LOG_LEVELS.INFO) console.info(`Gnome Clipboard: [INFO] ${text}`);
 }
 
 export function debug(text: string) {
-    if (log_level() >= LOG_LEVELS.DEBUG)
-        console.debug(`Gnome Clipboard: [DEBUG] ${text}`);
+    if (log_level() >= LOG_LEVELS.DEBUG) console.debug(`Gnome Clipboard: [DEBUG] ${text}`);
 }
