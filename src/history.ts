@@ -44,9 +44,7 @@ export class History {
     // (an image item has a file on disk).
     //
     // Pinned items are never dropped. The menu shows items by `copiedAt`, but
-    // eviction is by `usedAt`: entries you keep re-copying survive even as
-    // fresh copies keep arriving. getSorted('usedAt') puts pinned items first,
-    // so everything from `total` onwards is the unpinned overflow to drop.
+    // eviction is by `usedAt`.
     public trim(total: number): Array<ClipboardItem.ClipboardItem> {
         const removed: Array<ClipboardItem.ClipboardItem> = [];
         if (total <= 0) {
@@ -92,9 +90,6 @@ export class History {
         });
     }
 
-    // Pinned items first, then most recent first by the given timestamp.
-    // Defaults to `copiedAt` so callers that show history get copy order;
-    // pass 'usedAt' to order by last use instead (see trim()).
     public getSorted(by: HistorySortKey = 'copiedAt'): Array<ClipboardItem.ClipboardItem> {
         const arr = Array.from(this._history.values());
         arr.sort((l: ClipboardItem.ClipboardItem, r: ClipboardItem.ClipboardItem): number => {
