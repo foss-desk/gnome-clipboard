@@ -1,6 +1,5 @@
 import St from 'gi://St';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
-import * as log from './log.js';
 
 export class ScrollMenu extends PopupMenu.PopupMenuSection {
     public scrollView: St.ScrollView;
@@ -23,32 +22,11 @@ export class ScrollMenu extends PopupMenu.PopupMenuSection {
         this.actor.add_child(this.scrollView);
     }
 
-    filterItems(query: string) {
-        log.debug(`filtering ${query}`);
-
-        const items = this.scrollViewSection._getMenuItems();
-        if (query === '') {
-            items.forEach(function (item: any) {
-                item.actor.visible = true;
-            });
-        } else {
-            items.forEach(function (item: any) {
-                const text = item.text().toLowerCase();
-                const matched = text.indexOf(query) >= 0;
-                item.actor.visible = matched;
-            });
-        }
-    }
-
     addMenuItem(item: any) {
         this.scrollViewSection.addMenuItem(item);
     }
 
     removeAll() {
         this.scrollViewSection.removeAll();
-    }
-
-    scrollToBottom() {
-        // TODO: Implement using new adjustment API if needed
     }
 }

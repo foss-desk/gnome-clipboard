@@ -43,13 +43,13 @@ msgid "Clipboard updated"
 msgstr "클립보드 업데이트됨"
 
 msgid "Clipboard capture enabled"
-msgstr ""
+msgstr "클립보드 캡처 사용 설정됨"
 
 msgid "Clipboard capture paused"
-msgstr ""
+msgstr "클립보드 캡처 일시중지됨"
 
 msgid "Gnome Clipboard"
-msgstr ""
+msgstr "Gnome Clipboard"
 
 msgid "Clear history?"
 msgstr "기록을 지우시겠습니까?"
@@ -172,7 +172,7 @@ msgid "Select Previous Item"
 msgstr "이전 항목 선택"
 
 msgid "Toggle Capture"
-msgstr ""
+msgstr "캡처 전환"
 
 msgid "None"
 msgstr "없음"

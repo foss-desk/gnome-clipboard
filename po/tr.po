@@ -44,13 +44,13 @@ msgid "Clipboard updated"
 msgstr "Pano güncellendi"
 
 msgid "Clipboard capture enabled"
-msgstr ""
+msgstr "Pano yakalama etkinleştirildi"
 
 msgid "Clipboard capture paused"
-msgstr ""
+msgstr "Pano yakalama duraklatıldı"
 
 msgid "Gnome Clipboard"
-msgstr ""
+msgstr "Gnome Clipboard"
 
 msgid "Clear history?"
 msgstr "Geçmiş temizlensin mi?"
@@ -173,7 +173,7 @@ msgid "Select Previous Item"
 msgstr "Önceki öğeyi seç"
 
 msgid "Toggle Capture"
-msgstr ""
+msgstr "Yakalamayı aç/kapat"
 
 msgid "None"
 msgstr "Yok"

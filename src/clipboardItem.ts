@@ -60,8 +60,9 @@ export abstract class ClipboardItem {
 
     public abstract displayWidget(): any;
 
-    // Put this item onto the system clipboard.
-    public abstract copyToClipboard(): void;
+    // Put this item onto the system clipboard. Asynchronous because an image
+    // has to be read from disk first.
+    public abstract copyToClipboard(): Promise<void>;
 
     // Release the resources this item owns (an image owns a file on disk).
     public abstract dispose(store: Store): void;

@@ -32,7 +32,7 @@ export class ClipboardItemText extends ClipboardItem {
         return this.text;
     }
 
-    public copyToClipboard(): void {
+    public async copyToClipboard(): Promise<void> {
         const clipboard = St.Clipboard.get_default();
         clipboard.set_text(St.ClipboardType.CLIPBOARD, this.text);
     }

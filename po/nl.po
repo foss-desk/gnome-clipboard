@@ -44,13 +44,13 @@ msgid "Clipboard updated"
 msgstr "Het klembord is bĳgewerkt"
 
 msgid "Clipboard capture enabled"
-msgstr ""
+msgstr "Klembord vastleggen ingeschakeld"
 
 msgid "Clipboard capture paused"
-msgstr ""
+msgstr "Klembord vastleggen gepauzeerd"
 
 msgid "Gnome Clipboard"
-msgstr ""
+msgstr "Gnome Clipboard"
 
 msgid "Clear history?"
 msgstr "Geschiedenis wissen?"
@@ -175,7 +175,7 @@ msgid "Select Previous Item"
 msgstr "Vorig item selecteren"
 
 msgid "Toggle Capture"
-msgstr ""
+msgstr "Vastleggen in-/uitschakelen"
 
 msgid "None"
 msgstr "Geen"

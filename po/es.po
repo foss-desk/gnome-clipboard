@@ -41,13 +41,13 @@ msgid "Clipboard updated"
 msgstr "Portapapeles actualizado"
 
 msgid "Clipboard capture enabled"
-msgstr ""
+msgstr "Captura del portapapeles activada"
 
 msgid "Clipboard capture paused"
-msgstr ""
+msgstr "Captura del portapapeles pausada"
 
 msgid "Gnome Clipboard"
-msgstr ""
+msgstr "Gnome Clipboard"
 
 msgid "Clear history?"
 msgstr "¿Borrar el historial?"
@@ -170,7 +170,7 @@ msgid "Select Previous Item"
 msgstr "Seleccionar el elemento anterior"
 
 msgid "Toggle Capture"
-msgstr ""
+msgstr "Alternar captura"
 
 msgid "None"
 msgstr "Ninguno"

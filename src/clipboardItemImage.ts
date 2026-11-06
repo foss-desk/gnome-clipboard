@@ -8,6 +8,7 @@ import GdkPixbuf from 'gi://GdkPixbuf';
 import { ClipboardItem, ClipboardItemType, Store } from './clipboardItem.js';
 import type { ClipboardItemData } from './clipboardItem.js';
 import { imageNameFor, imagePathFor, thumbnailPathFor } from './store.js';
+import * as log from './log.js';
 
 let _ = (s: string) => s;
 
@@ -41,13 +42,6 @@ export class ClipboardItemImage extends ClipboardItem {
         return imageNameFor(this.id);
     }
 
-    // Persist the PNG and its thumbnail. Separate from the constructor because
-    // the write and decode are async and a constructor cannot await. A no-op
-    // for items restored from history, which carry no bytes.
-    public async save(store: Store, bytes: GLib.Bytes): Promise<boolean> {
-        return (await store.saveImage(this.id, bytes)) !== null;
-    }
-
     // Absolute path of the image file: `<data folder>/images/<id>.png`.
     public filePath(): string {
         return imagePathFor(this.imageName());
@@ -65,11 +59,26 @@ export class ClipboardItemImage extends ClipboardItem {
         return '';
     }
 
-    public copyToClipboard(): void {
-        const file = Gio.File.new_for_path(this.filePath());
-        const [bytes] = file.load_bytes(null);
-        const source = Meta.SelectionSourceMemory.new('image/png', bytes);
-        global.display.get_selection().set_owner(Meta.SelectionType.SELECTION_CLIPBOARD, source);
+    public async copyToClipboard(): Promise<void> {
+        try {
+            const file = Gio.File.new_for_path(this.filePath());
+            const bytes = await new Promise<GLib.Bytes>((resolve, reject) => {
+                file.load_bytes_async(null, (file: any, res: any) => {
+                    try {
+                        const [contents] = file.load_bytes_finish(res);
+                        resolve(contents);
+                    } catch (e) {
+                        reject(e);
+                    }
+                });
+            });
+            const source = Meta.SelectionSourceMemory.new('image/png', bytes);
+            global.display
+                .get_selection()
+                .set_owner(Meta.SelectionType.SELECTION_CLIPBOARD, source);
+        } catch (err) {
+            log.error(`failed to copy image ${this.id}: ${err}`);
+        }
     }
 
     public dispose(store: Store): void {
