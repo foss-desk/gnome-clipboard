@@ -105,9 +105,9 @@ export class ClipboardItemImage extends ClipboardItem {
         return item;
     }
 
-    // Prefer the cached thumbnail; fall back to the original when no thumbnail
-    // could be generated (e.g. the first menu build races startup thumbnail
-    // generation).
+    // Prefer the cached 256px thumbnail; fall back to the original when no
+    // thumbnail could be generated (e.g. the first menu build races startup
+    // thumbnail generation).
     private _previewSource(): string {
         const source = this.filePath();
         const thumbPath = thumbnailPathFor(this.imageName());
