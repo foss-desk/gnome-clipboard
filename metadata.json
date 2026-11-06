@@ -1,6 +1,5 @@
 {
     "shell-version": ["45", "46", "47", "48", "49", "50", "51"],
-    "version": 70,
     "gettext-domain": "gnome-clipboard",
     "settings-schema": "org.gnome.shell.extensions.gnome-clipboard",
     "uuid": "gnome-clipboard@b00f.github.io",

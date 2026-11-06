@@ -42,13 +42,13 @@ msgid "Clipboard updated"
 msgstr "Буфер обмена обновлён"
 
 msgid "Clipboard capture enabled"
-msgstr ""
+msgstr "Захват буфера обмена включён"
 
 msgid "Clipboard capture paused"
-msgstr ""
+msgstr "Захват буфера обмена приостановлен"
 
 msgid "Gnome Clipboard"
-msgstr ""
+msgstr "Gnome Clipboard"
 
 msgid "Clear history?"
 msgstr "Очистить историю?"
@@ -171,7 +171,7 @@ msgid "Select Previous Item"
 msgstr "Выбрать предыдущий элемент"
 
 msgid "Toggle Capture"
-msgstr ""
+msgstr "Переключить захват"
 
 msgid "None"
 msgstr "Нет"

@@ -271,7 +271,7 @@ class ClipboardPanelInternal extends PanelMenu.Button {
     }
 
     private async _copyToClipboard(item: ClipboardItem) {
-        item.copyToClipboard();
+        await item.copyToClipboard();
 
         this._selectedID = item.id;
         this._refresh();

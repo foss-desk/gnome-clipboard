@@ -41,13 +41,13 @@ msgid "Clipboard updated"
 msgstr "کلیپبورد بروز شد"
 
 msgid "Clipboard capture enabled"
-msgstr ""
+msgstr "ضبط کلیپبورد فعال شد"
 
 msgid "Clipboard capture paused"
-msgstr ""
+msgstr "ضبط کلیپبورد موقتاً متوقف شد"
 
 msgid "Gnome Clipboard"
-msgstr ""
+msgstr "Gnome Clipboard"
 
 msgid "Clear history?"
 msgstr "پاک کردن تاریخچه"
@@ -170,7 +170,7 @@ msgid "Select Previous Item"
 msgstr "انتخاب آیتم قبلی"
 
 msgid "Toggle Capture"
-msgstr ""
+msgstr "تغییر حالت ضبط"
 
 msgid "None"
 msgstr "هیچ‌کدام"

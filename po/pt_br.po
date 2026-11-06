@@ -41,13 +41,13 @@ msgid "Clipboard updated"
 msgstr "Área de transferência atualizada"
 
 msgid "Clipboard capture enabled"
-msgstr ""
+msgstr "Captura da área de transferência ativada"
 
 msgid "Clipboard capture paused"
-msgstr ""
+msgstr "Captura da área de transferência pausada"
 
 msgid "Gnome Clipboard"
-msgstr ""
+msgstr "Gnome Clipboard"
 
 msgid "Clear history?"
 msgstr "Limpar histórico?"
@@ -170,7 +170,7 @@ msgid "Select Previous Item"
 msgstr "Selecionar item anterior"
 
 msgid "Toggle Capture"
-msgstr ""
+msgstr "Alternar captura"
 
 msgid "None"
 msgstr "Nenhum"
