@@ -102,6 +102,16 @@ export default class GnomeClipboardExtension extends Extension {
                 if (this._panel) this._panel.selectPrevItem();
             },
         );
+
+        wm.addKeybinding(
+            Settings.SHORTCUT_CAPTURE,
+            settings,
+            Meta.KeyBindingFlags.NONE,
+            Shell.ActionMode.ALL,
+            () => {
+                if (this._panel) this._panel.toggleCapture();
+            },
+        );
     }
 
     private _removeKeybinding() {
@@ -110,5 +120,6 @@ export default class GnomeClipboardExtension extends Extension {
         wm.removeKeybinding(Settings.SHORTCUT_CLEAR);
         wm.removeKeybinding(Settings.SHORTCUT_NEXT);
         wm.removeKeybinding(Settings.SHORTCUT_PREV);
+        wm.removeKeybinding(Settings.SHORTCUT_CAPTURE);
     }
 }

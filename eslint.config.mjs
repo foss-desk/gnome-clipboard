@@ -28,6 +28,8 @@ export default [
             '@typescript-eslint/no-explicit-any': 'off',
             // Allow `== null`, which intentionally matches both null and undefined.
             eqeqeq: ['error', 'smart'],
+            // Require braces around every block, even single statements.
+            curly: ['error', 'all'],
             'no-var': 'error',
             'prefer-const': 'error',
             // Underscore prefix marks intentionally unused bindings (GJS signal

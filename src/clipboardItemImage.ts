@@ -32,13 +32,8 @@ const _sizeCache: Map<string, PreviewSize | null> = new Map();
 export class ClipboardItemImage extends ClipboardItem {
     public readonly type = ClipboardItemType.IMAGE;
 
-    // Bytes of a freshly copied image, held until save() persists them. Null
-    // for items restored from history, whose PNG already exists on disk.
-    private _bytes: GLib.Bytes | null;
-
-    constructor(id: number, bytes?: GLib.Bytes) {
+    constructor(id: number) {
         super(id);
-        this._bytes = bytes ?? null;
     }
 
     // On-disk name of this image, `<id>.png`.
@@ -49,9 +44,8 @@ export class ClipboardItemImage extends ClipboardItem {
     // Persist the PNG and its thumbnail. Separate from the constructor because
     // the write and decode are async and a constructor cannot await. A no-op
     // for items restored from history, which carry no bytes.
-    public async save(store: Store): Promise<boolean> {
-        if (!this._bytes) return true;
-        return (await store.saveImage(this.id, this._bytes)) !== null;
+    public async save(store: Store, bytes: GLib.Bytes): Promise<boolean> {
+        return (await store.saveImage(this.id, bytes)) !== null;
     }
 
     // Absolute path of the image file: `<data folder>/images/<id>.png`.
@@ -88,6 +82,8 @@ export class ClipboardItemImage extends ClipboardItem {
             id: this.id,
             pinned: this.pinned,
             copiedAt: this.copiedAt,
+            usage: this.usage,
+            usedAt: this.usedAt,
         };
     }
 
@@ -95,6 +91,8 @@ export class ClipboardItemImage extends ClipboardItem {
         const item = new ClipboardItemImage(raw.id);
         item.pinned = raw.pinned;
         item.copiedAt = raw.copiedAt;
+        item.usage = raw.usage;
+        item.usedAt = raw.usedAt;
         return item;
     }
 

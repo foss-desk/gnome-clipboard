@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard@b00f.github.io\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 20:38+0800\n"
+"POT-Creation-Date: 2026-11-05 22:15+0800\n"
 "PO-Revision-Date: 2023-05-22 16:03+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
@@ -42,6 +42,15 @@ msgstr "Pano"
 
 msgid "Clipboard updated"
 msgstr "Pano güncellendi"
+
+msgid "Clipboard capture enabled"
+msgstr ""
+
+msgid "Clipboard capture paused"
+msgstr ""
+
+msgid "Gnome Clipboard"
+msgstr ""
 
 msgid "Clear history?"
 msgstr "Geçmiş temizlensin mi?"
@@ -162,6 +171,9 @@ msgstr "Sonraki öğeyi seç"
 
 msgid "Select Previous Item"
 msgstr "Önceki öğeyi seç"
+
+msgid "Toggle Capture"
+msgstr ""
 
 msgid "None"
 msgstr "Yok"

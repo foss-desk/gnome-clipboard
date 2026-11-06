@@ -17,6 +17,8 @@ export interface ClipboardItemData {
     text?: string;
     pinned: boolean;
     copiedAt: number;
+    usage: number;
+    usedAt: number;
 }
 
 type ClipboardItemFactory = (raw: any) => ClipboardItem;
@@ -26,7 +28,12 @@ export abstract class ClipboardItem {
     public readonly id: number;
 
     public pinned: boolean;
+
+    // How many times the entry has been copied, and when it was last copied.
+    public usage: number;
+
     public copiedAt: number;
+    public usedAt: number;
 
     // Wire discriminator. Branch on `instanceof` for per-type behaviour.
     public abstract readonly type: ClipboardItemType;
@@ -35,6 +42,15 @@ export abstract class ClipboardItem {
         this.id = id;
         this.pinned = false;
         this.copiedAt = Date.now();
+        this.usedAt = Date.now();
+        this.usage = 1;
+    }
+
+    // Called when an entry already in the history is copied again: count the
+    // use and remember when, without disturbing the original `copiedAt`.
+    public updateLastUsed(): void {
+        this.usage++;
+        this.usedAt = Date.now();
     }
 
     public abstract notification(): string;
