@@ -57,9 +57,8 @@ export class ClipboardItemText extends ClipboardItem {
         const item = new ClipboardItemText(raw.id, raw.text);
         item.pinned = raw.pinned;
         item.copiedAt = raw.copiedAt;
-        // History written before usage tracking lacks these fields.
-        item.usage = raw.usage ?? 1;
-        item.usedAt = raw.usedAt ?? raw.copiedAt;
+        item.usage = raw.usage;
+        item.usedAt = raw.usedAt;
         return item;
     }
 }

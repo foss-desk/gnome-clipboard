@@ -39,33 +39,20 @@ export class History {
 
     // Returns the items it dropped, so the caller can release what they own
     // (an image item has a file on disk).
-    //
-    // Pinned items are never dropped. Among the rest, the least recently used
-    // entries go first: the menu keeps showing items by `copiedAt`, but eviction
-    // is by `usedAt`, so entries you keep re-copying survive even as fresh
-    // copies keep arriving.
     public trim(total: number): Array<ClipboardItem.ClipboardItem> {
         const removed: Array<ClipboardItem.ClipboardItem> = [];
         if (total <= 0) {
             return removed;
         }
 
-        const unpinned: Array<ClipboardItem.ClipboardItem> = [];
-        let pinnedCount = 0;
-        this._history.forEach((item) => {
+        // getSorted() puts pinned items first, then the most recently copied ones,
+        // so everything from `total` onwards is the oldest overflow.
+        const arr = this.getSorted();
+        for (let i = total; i < arr.length; ++i) {
+            const item = arr[i];
             if (item.pinned) {
-                pinnedCount++;
-            } else {
-                unpinned.push(item);
+                continue;
             }
-        });
-
-        // Most recently used first, so the tail is the overflow to evict.
-        unpinned.sort((l, r) => r.usedAt - l.usedAt);
-
-        const keep = Math.max(0, total - pinnedCount);
-        for (let i = keep; i < unpinned.length; ++i) {
-            const item = unpinned[i];
             this._history.delete(item.id);
             removed.push(item);
         }

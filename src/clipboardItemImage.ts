@@ -91,9 +91,8 @@ export class ClipboardItemImage extends ClipboardItem {
         const item = new ClipboardItemImage(raw.id);
         item.pinned = raw.pinned;
         item.copiedAt = raw.copiedAt;
-        // History written before usage tracking lacks these fields.
-        item.usage = raw.usage ?? 1;
-        item.usedAt = raw.usedAt ?? raw.copiedAt;
+        item.usage = raw.usage;
+        item.usedAt = raw.usedAt;
         return item;
     }
 
