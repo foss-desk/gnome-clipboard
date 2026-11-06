@@ -4,6 +4,9 @@ import * as ClipboardItem from './clipboardItem.js';
 import './clipboardItemText.js';
 import './clipboardItemImage.js';
 
+// Timestamps on a ClipboardItem that history can be ordered by.
+export type HistorySortKey = 'copiedAt' | 'usedAt';
+
 export class History {
     private _history: Map<number, ClipboardItem.ClipboardItem>;
 
@@ -40,32 +43,22 @@ export class History {
     // Returns the items it dropped, so the caller can release what they own
     // (an image item has a file on disk).
     //
-    // Pinned items are never dropped. Among the rest, the least recently used
-    // entries go first: the menu keeps showing items by `copiedAt`, but eviction
-    // is by `usedAt`, so entries you keep re-copying survive even as fresh
-    // copies keep arriving.
+    // Pinned items are never dropped. The menu shows items by `copiedAt`, but
+    // eviction is by `usedAt`: entries you keep re-copying survive even as
+    // fresh copies keep arriving. getSorted('usedAt') puts pinned items first,
+    // so everything from `total` onwards is the unpinned overflow to drop.
     public trim(total: number): Array<ClipboardItem.ClipboardItem> {
         const removed: Array<ClipboardItem.ClipboardItem> = [];
         if (total <= 0) {
             return removed;
         }
 
-        const unpinned: Array<ClipboardItem.ClipboardItem> = [];
-        let pinnedCount = 0;
-        this._history.forEach((item) => {
+        const arr = this.getSorted('usedAt');
+        for (let i = total; i < arr.length; ++i) {
+            const item = arr[i];
             if (item.pinned) {
-                pinnedCount++;
-            } else {
-                unpinned.push(item);
+                continue;
             }
-        });
-
-        // Most recently used first, so the tail is the overflow to evict.
-        unpinned.sort((l, r) => r.usedAt - l.usedAt);
-
-        const keep = Math.max(0, total - pinnedCount);
-        for (let i = keep; i < unpinned.length; ++i) {
-            const item = unpinned[i];
             this._history.delete(item.id);
             removed.push(item);
         }
@@ -99,8 +92,10 @@ export class History {
         });
     }
 
-    // Pinned items first, then most recently copied.
-    public getSorted(): Array<ClipboardItem.ClipboardItem> {
+    // Pinned items first, then most recent first by the given timestamp.
+    // Defaults to `copiedAt` so callers that show history get copy order;
+    // pass 'usedAt' to order by last use instead (see trim()).
+    public getSorted(by: HistorySortKey = 'copiedAt'): Array<ClipboardItem.ClipboardItem> {
         const arr = Array.from(this._history.values());
         arr.sort((l: ClipboardItem.ClipboardItem, r: ClipboardItem.ClipboardItem): number => {
             if (r.pinned && !l.pinned) {
@@ -111,7 +106,7 @@ export class History {
                 return -1;
             }
 
-            return r.copiedAt - l.copiedAt;
+            return r[by] - l[by];
         });
 
         return arr;
