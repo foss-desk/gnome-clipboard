@@ -12,6 +12,7 @@ export const SHORTCUT_MENU = 'shortcut-menu';
 export const SHORTCUT_CLEAR = 'shortcut-clear';
 export const SHORTCUT_NEXT = 'shortcut-next';
 export const SHORTCUT_PREV = 'shortcut-prev';
+export const SHORTCUT_CAPTURE = 'shortcut-capture';
 
 export class ExtensionSettings {
     private _settings: Gio.Settings;
@@ -70,6 +71,10 @@ export class ExtensionSettings {
 
     shortcutPrev(): string[] {
         return this._settings.get_strv(SHORTCUT_PREV);
+    }
+
+    shortcutToggleCapture(): string[] {
+        return this._settings.get_strv(SHORTCUT_CAPTURE);
     }
 
     getSettings(): Gio.Settings {

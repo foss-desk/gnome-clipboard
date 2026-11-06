@@ -71,7 +71,7 @@ update-translations: compile
 	done
 
 listen:
-	journalctl -o cat -n 0 -f "$$(which gnome-shell)" | grep -v warning
+	journalctl -o cat  -f "$$(which gnome-shell)" | grep --line-buffered "Gnome Clipboard"
 
 test: install enable restart-shell
 

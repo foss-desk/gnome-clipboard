@@ -3,10 +3,11 @@ import Gio from 'gi://Gio';
 import GdkPixbuf from 'gi://GdkPixbuf';
 import * as log from './log.js';
 
-// Longest edge of a cached preview. The menu only shows ~208px wide previews,
-// but a larger thumbnail keeps them crisp on HiDPI displays and gives the
-// preview widget room to crop very wide/tall images.
-const THUMB_MAX_SIZE = 512;
+// Longest edge of a cached preview. The menu renders previews in a box of at
+// most 128x64 CSS px (PREVIEW_MAX_* in clipboardItemImage.ts), so 256px is
+// enough to stay crisp on 2x HiDPI displays without storing a needlessly large
+// file.
+const THUMB_MAX_SIZE = 256;
 const THUMB_SUFFIX = '.thumb.png';
 
 // The directory holding image files, published when a Store is constructed.

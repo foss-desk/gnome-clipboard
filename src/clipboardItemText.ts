@@ -48,6 +48,8 @@ export class ClipboardItemText extends ClipboardItem {
             text: this.text,
             pinned: this.pinned,
             copiedAt: this.copiedAt,
+            usage: this.usage,
+            usedAt: this.usedAt,
         };
     }
 
@@ -55,6 +57,8 @@ export class ClipboardItemText extends ClipboardItem {
         const item = new ClipboardItemText(raw.id, raw.text);
         item.pinned = raw.pinned;
         item.copiedAt = raw.copiedAt;
+        item.usage = raw.usage;
+        item.usedAt = raw.usedAt;
         return item;
     }
 }

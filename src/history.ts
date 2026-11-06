@@ -29,10 +29,8 @@ export class History {
 
     public add(item: ClipboardItem.ClipboardItem): boolean {
         if (this._history.has(item.id)) {
-            // Re-copying an existing entry moves it back to the top of the
-            // history instead of creating a duplicate.
             const existing = this._history.get(item.id)!;
-            existing.copiedAt = Date.now();
+            existing.updateLastUsed();
             return false;
         }
         this._history.set(item.id, item);

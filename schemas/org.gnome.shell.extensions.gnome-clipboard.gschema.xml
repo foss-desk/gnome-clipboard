@@ -69,8 +69,14 @@
       <description>Keyboard shortcut to cycle to the previous item in history without opening the menu.</description>
     </key>
 
+    <key type="as" name="shortcut-capture">
+      <default>[]</default>
+      <summary>Shortcut to toggle capture</summary>
+      <description>Keyboard shortcut to pause and resume capturing clipboard items.</description>
+    </key>
+
     <key type="u" name="log-level">
-      <default>3</default>
+      <default>2</default>
       <summary>
           Derive some log4j level/order
           0 - OFF

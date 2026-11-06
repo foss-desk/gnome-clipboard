@@ -125,4 +125,11 @@ export class ActionBar extends PopupMenu.PopupBaseMenuItem {
     enable() {
         return this._enableBtn ? !!this._enableBtn.state : true;
     }
+
+    // Flip the capture switch as if the user had clicked it. Returns the new
+    // state so callers can report whether capture is now on or paused.
+    toggleCapture(): boolean {
+        this._enableBtn.toggle();
+        return !!this._enableBtn.state;
+    }
 }

@@ -5,6 +5,8 @@
 
 A professional, feature-rich GNOME Shell extension for managing your clipboard history. **Gnome Clipboard** seamlessly integrates into the GNOME top bar, giving you quick access to your recently copied text and images, allowing you to pin important items, and providing robust privacy controls.
 
+![Gnome Clipboard screenshot](media/screenshot.png)
+
 ---
 
 ## 🌟 Features
@@ -32,6 +34,7 @@ You can customize Gnome Clipboard to fit your workflow perfectly using the exten
 | **Notifications**     | Toggle desktop notifications when an item is copied or pinned.                                                                                                             | `false`    |
 | **Blacklist**         | Apps whose copies are ignored, by desktop file id (e.g. `org.keepassxc.KeePassXC.desktop`) or name. Matched against the app that has the focus when the clipboard changes. | `[]`       |
 | **Keyboard Shortcut** | Set a global shortcut to open the clipboard menu.                                                                                                                          | `<Super>v` |
+| **Toggle Capture**    | Set a global shortcut to pause and resume capturing clipboard items (the "not capturing" mode).                                                                            | `None`     |
 
 ## Installation
 
@@ -123,7 +126,7 @@ The project uses [ESLint](https://eslint.org/) (with
 so install it once:
 
 ```bash
-make deps      # or: npm install
+npm install
 ```
 
 Then use:

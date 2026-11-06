@@ -224,6 +224,7 @@ export default class GnomeClipboardPreferences extends ExtensionPreferences {
         addShortcutRow(Settings.SHORTCUT_CLEAR, this.gettext('Clear History'));
         addShortcutRow(Settings.SHORTCUT_NEXT, this.gettext('Select Next Item'));
         addShortcutRow(Settings.SHORTCUT_PREV, this.gettext('Select Previous Item'));
+        addShortcutRow(Settings.SHORTCUT_CAPTURE, this.gettext('Toggle Capture'));
     }
 
     private _loadPreferencesStyle(): void {

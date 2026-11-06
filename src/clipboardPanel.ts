@@ -216,28 +216,33 @@ class ClipboardPanelInternal extends PanelMenu.Button {
         const hasText = mimetypes.some((m) => m.startsWith('text/'));
         const hasImage = mimetypes.some((m) => m.startsWith('image/'));
 
+        const onSave = (item: ClipboardItem) => {
+            this._history.add(item);
+
+            this._selectedID = item.id;
+            this._refresh();
+            this._saveHistoryDebounced();
+        };
+
         if (hasImage) {
-            this._checkImageClipboard(clipboard);
+            this._checkImageClipboard(clipboard, onSave);
         }
 
         if (hasText) {
-            this._checkTextClipboard(clipboard);
+            this._checkTextClipboard(clipboard, onSave);
         }
     }
 
-    private _checkTextClipboard(clipboard: St.Clipboard) {
+    private _checkTextClipboard(clipboard: St.Clipboard, onSave: (item: ClipboardItem) => void) {
         clipboard.get_text(St.ClipboardType.CLIPBOARD, (_cb: St.Clipboard, text: string) => {
             if (!text || text.trim().length === 0) return;
 
             const id = utils.hashText(text);
-            this._selectedID = id;
-            this._history.add(new ClipboardItemText(id, text));
-            this._refresh();
-            this._saveHistoryDebounced();
+            onSave(new ClipboardItemText(id, text));
         });
     }
 
-    private _checkImageClipboard(clipboard: St.Clipboard) {
+    private _checkImageClipboard(clipboard: St.Clipboard, onSave: (item: ClipboardItem) => void) {
         if (!this._settings.storeImages()) return;
 
         clipboard.get_content(
@@ -255,27 +260,12 @@ class ClipboardPanelInternal extends PanelMenu.Button {
                 }
 
                 const id = utils.hashByte(bytes);
+                onSave(new ClipboardItemImage(id));
 
-                // Re-copying the current image only bumps its timestamp; skip
-                // the disk write and thumbnail decode entirely.
-                if (this._history.contains(id)) {
-                    const existing = this._history.get(id)!;
-                    existing.copiedAt = Date.now();
-                    this._selectedID = id;
-                    this._refresh();
-                    this._saveHistoryDebounced();
-                    return;
+                const saved = await this._store.saveImage(id, bytes);
+                if (!saved) {
+                    log.error(`failed to save image ${id}`);
                 }
-
-                // Construct first, then persist: the PNG write and thumbnail
-                // decode are async and a constructor cannot await.
-                const item = new ClipboardItemImage(id, bytes);
-                if (!(await item.save(this._store))) return;
-
-                this._selectedID = id;
-                this._history.add(item);
-                this._refresh();
-                this._saveHistoryDebounced();
             },
         );
     }
@@ -293,6 +283,19 @@ class ClipboardPanelInternal extends PanelMenu.Button {
 
     public toggleService() {
         // Manual toggle via switch in ActionBar is handled there
+    }
+
+    // Pause or resume clipboard capture. Backs the global capture shortcut and
+    // the "Capture" switch in the action bar, which share the same state.
+    public toggleCapture() {
+        const enabled = this._actionBar.toggleCapture();
+
+        if (this._settings.showNotifications()) {
+            Main.notify(
+                _('Gnome Clipboard'),
+                enabled ? _('Clipboard capture enabled') : _('Clipboard capture paused'),
+            );
+        }
     }
 
     public clearHistory() {
