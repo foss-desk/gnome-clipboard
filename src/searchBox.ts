@@ -1,12 +1,7 @@
 import St from 'gi://St';
 import GObject from 'gi://GObject';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
-
-let _ = (s: string) => s;
-
-export function init(gettextFunc: (s: string) => string) {
-    _ = gettextFunc;
-}
+import { _ } from './i18n.js';
 
 export class SearchBox extends PopupMenu.PopupBaseMenuItem {
     public searchEntry: St.Entry;

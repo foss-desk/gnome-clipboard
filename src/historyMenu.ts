@@ -6,12 +6,7 @@ import * as ScrollMenu from './scrollMenu.js';
 import * as ClipboardItem from './clipboardItem.js';
 import * as MenuItem from './menuItem.js';
 import * as utils from './utils.js';
-
-let _ = (s: string) => s;
-
-export function init(gettextFunc: (s: string) => string) {
-    _ = gettextFunc;
-}
+import { _ } from './i18n.js';
 
 export class HistoryMenu extends ScrollMenu.ScrollMenu {
     private _onActivateItem: (item: ClipboardItem.ClipboardItem) => void;

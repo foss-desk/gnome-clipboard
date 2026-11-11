@@ -4,12 +4,7 @@ import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
 import * as ClipboardPanel from './clipboardPanel.js';
-import * as ClipboardItemImage from './clipboardItemImage.js';
-import * as ActionBar from './actionBar.js';
-import * as ConfirmDialog from './confirmDialog.js';
-import * as HistoryMenu from './historyMenu.js';
-import * as MenuItem from './menuItem.js';
-import * as SearchBox from './searchBox.js';
+import * as I18n from './i18n.js';
 import * as log from './log.js';
 import * as Settings from './settings.js';
 
@@ -23,22 +18,11 @@ export default class GnomeClipboardExtension extends Extension {
         log.init(this.getSettings(Settings.SCHEMA_ID));
 
         if (!this._panel) {
-            // Every module keeps its own `_`, so each one has to be handed the
-            // extension's gettext or its strings stay in English.
-            const gettext = this.gettext.bind(this);
-            for (const mod of [
-                ClipboardPanel,
-                ClipboardItemImage,
-                ActionBar,
-                ConfirmDialog,
-                HistoryMenu,
-                MenuItem,
-                SearchBox,
-            ])
-                mod.init(gettext);
+            // Every module shares the one gettext store (see i18n.ts), so a
+            // single init call translates the whole extension.
+            I18n.init(this.gettext.bind(this));
             this._panel = new ClipboardPanel.ClipboardPanel(
                 this.getSettings(Settings.SCHEMA_ID),
-                this.gettext.bind(this),
                 this.uuid,
                 () => this.openPreferences(),
             );

@@ -21,12 +21,7 @@ import * as utils from './utils.js';
 import * as ConfirmDialog from './confirmDialog.js';
 import * as ActionBar from './actionBar.js';
 import * as SearchBox from './searchBox.js';
-
-let _ = (s: string) => s;
-
-export function init(gettextFunc: (s: string) => string) {
-    _ = gettextFunc;
-}
+import { _ } from './i18n.js';
 
 class ClipboardPanelInternal extends PanelMenu.Button {
     private _history: History.History;
@@ -47,7 +42,7 @@ class ClipboardPanelInternal extends PanelMenu.Button {
     private _settingsChangedID: number = 0;
     private _menuNeedsRebuild: boolean = true;
 
-    constructor(settings: any, _gettext: any, uuid: string, openPrefs: () => void) {
+    constructor(settings: any, uuid: string, openPrefs: () => void) {
         super(0.0, _('Clipboard'), false);
 
         log.info('initializing ...');
