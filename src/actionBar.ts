@@ -4,12 +4,7 @@ import Clutter from 'gi://Clutter';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 import * as utils from './utils.js';
 import * as Tooltip from './tooltip.js';
-
-let _ = (s: string) => s;
-
-export function init(gettextFunc: (s: string) => string) {
-    _ = gettextFunc;
-}
+import { _ } from './i18n.js';
 
 export class ActionBar extends PopupMenu.PopupBaseMenuItem {
     private _clearBtn: any;

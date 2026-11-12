@@ -9,12 +9,7 @@ import { ClipboardItem, ClipboardItemType, Store } from './clipboardItem.js';
 import type { ClipboardItemData } from './clipboardItem.js';
 import { imageNameFor, imagePathFor, thumbnailPathFor } from './store.js';
 import * as log from './log.js';
-
-let _ = (s: string) => s;
-
-export function init(gettextFunc: (s: string) => string) {
-    _ = gettextFunc;
-}
+import { _ } from './i18n.js';
 
 const PREVIEW_MAX_WIDTH = 128;
 const PREVIEW_MAX_HEIGHT = 64;
