@@ -9,6 +9,7 @@ import * as ActionBar from './actionBar.js';
 import * as ConfirmDialog from './confirmDialog.js';
 import * as HistoryMenu from './historyMenu.js';
 import * as MenuItem from './menuItem.js';
+import * as ScrollMenu from './scrollMenu.js';
 import * as SearchBox from './searchBox.js';
 import * as log from './log.js';
 import * as Settings from './settings.js';
@@ -33,6 +34,7 @@ export default class GnomeClipboardExtension extends Extension {
                 ConfirmDialog,
                 HistoryMenu,
                 MenuItem,
+                ScrollMenu,
                 SearchBox,
             ])
                 mod.init(gettext);

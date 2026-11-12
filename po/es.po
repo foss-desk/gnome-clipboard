@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 22:15+0800\n"
+"POT-Creation-Date: 2026-11-12 14:28+0800\n"
 "PO-Revision-Date: 2026-10-23 11:43-0300\n"
 "Last-Translator: kterva\n"
 "Language-Team: Spanish\n"
@@ -177,6 +177,9 @@ msgstr "Ninguno"
 
 msgid "New shortcut..."
 msgstr "Nuevo atajo..."
+
+msgid "Scroll to Top"
+msgstr "Ir al inicio"
 
 msgid "Search clipboard..."
 msgstr "Buscar en el portapapeles..."

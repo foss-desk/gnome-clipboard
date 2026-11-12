@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard@b00f.github.io\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 22:15+0800\n"
+"POT-Creation-Date: 2026-11-12 14:28+0800\n"
 "PO-Revision-Date: 2023-05-22 16:03+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
@@ -180,6 +180,9 @@ msgstr "Yok"
 
 msgid "New shortcut..."
 msgstr "Yeni kısayol..."
+
+msgid "Scroll to Top"
+msgstr "En üste kaydır"
 
 msgid "Search clipboard..."
 msgstr "Panoda ara..."
