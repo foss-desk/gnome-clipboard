@@ -3,12 +3,7 @@ import GObject from 'gi://GObject';
 import Clutter from 'gi://Clutter';
 import * as ModalDialog from 'resource:///org/gnome/shell/ui/modalDialog.js';
 import * as utils from './utils.js';
-
-let _ = (s: string) => s;
-
-export function init(gettextFunc: (s: string) => string) {
-    _ = gettextFunc;
-}
+import { _ } from './i18n.js';
 
 class ConfirmDialog extends ModalDialog.ModalDialog {
     static {
