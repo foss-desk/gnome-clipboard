@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-clipboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 22:15+0800\n"
+"POT-Creation-Date: 2026-11-12 14:28+0800\n"
 "PO-Revision-Date: 2021-06-12 16:33+0800\n"
 "Last-Translator: Mostafa <mostafa.sedaghat@gmail.com>\n"
 "Language-Team: Persian\n"
@@ -177,6 +177,9 @@ msgstr "هیچ‌کدام"
 
 msgid "New shortcut..."
 msgstr "میانبر جدید..."
+
+msgid "Scroll to Top"
+msgstr "رفتن به بالا"
 
 msgid "Search clipboard..."
 msgstr "جست‌وجو در کلیپ‌بورد..."

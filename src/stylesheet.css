@@ -104,6 +104,27 @@
     border-color: rgba(246, 97, 81, 0.3);
 }
 
+/* ─── Scroll To Top ──────────────────────────────────────────── */
+/* Floats over the bottom-right corner of the scroll view and is only shown
+ * while the list is scrolled away from the top (see scrollMenu.ts). It reuses
+ * .action-btn for padding and hover behaviour, so these rules have to come
+ * after the action button ones to win on the shared properties. */
+.gnome-clipboard .scroll-top-btn {
+    border-radius: 999px;
+    margin: 0 16px 16px 0;
+    padding: 12px;
+    background-color: #3d3d3d;
+    border: 1px solid #5a5a5a;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+    color: #ffffff;
+}
+
+.gnome-clipboard .scroll-top-btn:hover {
+    background-color: #4d4d4d;
+    border-color: #6e6e6e;
+    color: #ffffff;
+}
+
 /* ─── Service Switch ──────────────────────────────────────── */
 .gnome-clipboard .service-toggle-container {
     padding-left: 8px;
@@ -375,6 +396,19 @@
 
 .gnome-clipboard.light .empty-state-label {
     color: rgba(0, 0, 0, 0.55);
+}
+
+.gnome-clipboard.light .scroll-top-btn {
+    background-color: #e0e0e0;
+    border-color: #c0c0c0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+    color: #000000;
+}
+
+.gnome-clipboard.light .scroll-top-btn:hover {
+    background-color: #d0d0d0;
+    border-color: #b0b0b0;
+    color: #000000;
 }
 
 /* ─── Preferences ─────────────────────────────────────────── */
